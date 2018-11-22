@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "SMEART App",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./",
@@ -9,7 +9,8 @@
     "start": "node index.js",
     "dboff": "killall mongod",
     "watch": "nodemon index.js",
-    "dbon": " \"C:/Program Files/MongoDB/Server/3.6/bin/mongod.exe\" --dbpath c:/users/fred/documents/github/smeart/backend/db"
+    "dbon": "mongod --dbpath db",
+    "lssrc": "ls src"
   },
   "keywords": [],
   "author": "",
