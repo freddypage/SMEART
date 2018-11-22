@@ -1,1 +1,5 @@
- README.md .eslintrc.json .eslintignore .gitignore .env
+require('babel-register')({
+   presets: [ 'es2015' ]
+});
+
+require('./src/lib/server').start()

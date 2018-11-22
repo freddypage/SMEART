@@ -1,2 +1,0 @@
-# SMEART
-Web Development Project
