@@ -1,5 +1,5 @@
 'use strict'
-
+//This is where node.js connects with the server
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
