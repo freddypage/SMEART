@@ -1,9 +1,9 @@
 'use strict'
 //This is where node.js connects with the server
-import cors from 'cors';
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
+const cors = require('cors');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
 const router = express.Router();
@@ -28,13 +28,13 @@ app.all('*', (request, response) => {
 //app.use(require('./error-middleware'));
 
 
-export const start = () => {
+const start = () => {
   app.listen(PORT, () =>{
     console.log(`Listening on port: ${PORT}`)
   })
 }
 
-export const stop = () => {
+const stop = () => {
   app.close(PORT, () => {
     console.log(`Shut down on port: ${PORT}`)
   })
