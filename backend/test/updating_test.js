@@ -1,6 +1,6 @@
 
 const assert = require('assert');
-const pantry = require('../models/pantryitem');
+const pantry = require('../models/pantry');
 
 //describe tests -> describes the tests inside
 describe('Updating Records',function(){
@@ -11,7 +11,7 @@ describe('Updating Records',function(){
 	beforeEach(function(done){
 		p = new pantry({
 			username: 'fred',
-			pantryitems : 'eggs,bread'
+			//pantryitems : 'eggs,bread'
 		});
 
 		p.save().then(function(){

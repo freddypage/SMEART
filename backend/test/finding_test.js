@@ -8,7 +8,7 @@ describe('Finding Records',function(){
 	beforeEach(function(done){
 		p = new pantry({
 			username: 'fred',
-			pantryitems : 'eggs,bread'
+			//pantryitems : 'eggs,bread'
 		});
 
 		p.save().then(function(){

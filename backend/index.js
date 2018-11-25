@@ -2,4 +2,4 @@ require('babel-register')({
    presets: [ 'es2015' ]
 });
 
-require('./src/lib/server').start()
+require('./server/server') //location of server.js file
