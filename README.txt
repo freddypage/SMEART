@@ -22,6 +22,8 @@ Schema:
 
 Download ROBOMongo to see your database. The setup is pretty simple.
 
+Anthony:
+To run the react app on localhost, change into the my-app folder and run "yarn start" from terminal
 
 Anthony:
 ~~~ Notes on Babel ~~~

@@ -4,3 +4,4 @@ require('babel-register')({
 
 require('./server/server') //location of server.js file
 
+
