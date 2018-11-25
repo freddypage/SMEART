@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dboff": "killall mongod",
     "watch": "nodemon index.js",
-    "dbon": "mongod --dbpath db",
+    "dbon": "C:/Users/Fred/Documents/GitHub/SMEART/backend/node_modules/mongod/Mongod --dbpath db",
     "lssrc": "ls src"
   },
   "keywords": [],

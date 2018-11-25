@@ -4,12 +4,23 @@
 const unirest = require('unirest');
 var ingredients = "";
 
+/*
 unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/autocomplete?query=apple"+ingredients+"&number=10")
 .header("X-Mashape-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
 .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
 .end(function (result) {
 	console.log(result.status, result.headers, result.body);
 	go(result.body);
+});*/
+
+//Search Recipes by Ingredients
+
+unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=apples%2Cflour%2Csugar&number=5&ranking=1")
+.header("X-Mashape-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
+.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
+.end(function (result) {
+  console.log(result.status, result.headers, result.body);
+  go(result.body)
 });
 //
 //Extract json keys -> JSON parser
