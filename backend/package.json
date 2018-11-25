@@ -4,7 +4,7 @@
   "description": "SMEART App",
   "main": "index.js",
   "scripts": {
-    "test" : "node C:/Users/Fred/Documents/GitHub/SMEART/node_modules/mocha/bin/mocha",
+    "test": "node C:/Users/Fred/Documents/GitHub/SMEART/backend/node_modules/mocha/bin/mocha",
     "start": "node index.js",
     "dboff": "killall mongod",
     "watch": "nodemon index.js",

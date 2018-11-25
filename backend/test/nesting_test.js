@@ -4,12 +4,12 @@ const ppantry = require('../models/pantry');
 
 //Describe our tests
 describe('Nesting records',function(){
-
+	/*
 	beforeEach(function(done){
 		mongoose.connection.collections.ppantries.drop(function(){
 			done();
 		});
-	});
+	});*/
 
 	it('Creates a pantry with sub-documents',function(done){
 		var p = new ppantry({
