@@ -4,11 +4,11 @@
   "description": "SMEART App",
   "main": "index.js",
   "scripts": {
-    "test" : "node C:/Users/Fred/Documents/GitHub/SMEART/backend/node_modules/mocha/bin/mocha",
+    "test" : "node C:/Users/Fred/Documents/GitHub/SMEART/node_modules/mocha/bin/mocha",
     "start": "node index.js",
     "dboff": "killall mongod",
     "watch": "nodemon index.js",
-    "dbon": "C:/Users/Fred/Documents/GitHub/SMEART/backend/node_modules/mongod/Mongod --dbpath db",
+    "dbon": "C:/Users/Fred/Documents/GitHub/SMEART/node_modules/mongod/Mongod --dbpath db",
     "lssrc": "ls src"
   },
   "keywords": [],
