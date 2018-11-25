@@ -1,4 +1,4 @@
-const mocha = require('mocha');
+
 const assert = require('assert');
 const pantry = require('../models/pantryitem');
 
@@ -15,8 +15,9 @@ describe('Saving Records',function(){
 		p.save().then(function(){
 			assert(p.isNew==false);
 			done();
-		});
+		}); 
 	});
 
 	//next test
-})
+
+});
