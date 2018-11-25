@@ -23,3 +23,24 @@ Schema:
 Download ROBOMongo to see your database. The setup is pretty simple.
 
 
+Anthony:
+~~~ Notes on Babel ~~~
+What problem does Babel solve? Situation where a feature of JavaScript is available in 
+some versions of some browsers, but not in others.
+Babel is a compiler - takes code written in one standard and transforms it to code 
+written into another standard.
+Babel "transpiling" happens at build time - we need a workflow setup that can handle
+this for us. Popular one is Webpack. 
+
+Babel is installed locally in a project, can use npm 
+We can then add Babel configurations to our project using the .babelrc file 
+For example, having the line 
+	"plugins": ["transform-es2015-arrow-functions"]
+will transpile js files, converting arrow functions introduced in ES6, to older
+ES5 functions.
+
+We also have presets, which let you specify what environments you want to support.
+For example, 
+	"presets": ["env", "react"],
+lets babel know we are working in a react environment, and it sets up the environment 
+and modern JS features for you.
