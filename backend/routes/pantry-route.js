@@ -41,7 +41,7 @@ router.post('/makeuser',(req,res,next)=>{
 			// Some other error
 			return res.status(500).send(err);
 	    }
-	    res.send('Succesfully added user: '+newUser.username);
+	    res.send({success:true, message:'Succesfully added user: '+newUser.username});
 	});
 });
 
@@ -51,24 +51,31 @@ router.post('/additem/:id',(req,res,next)=>{
 	//add ingredient to pantry
 	var ingredient = {name:req.body.ingredient,quantity:1};
 
-	Pantry.findById(req.params.id, function(record){
+	Pantry.findById(req.params.id, function(err, record){
 		//add an ingredient to the pantryitems collection
-		record.pantryitems.push(ingredient);
-		record.save().then(function(record2){
+		if(record!=null)
+		{
+			record.pantryitems.push(ingredient);
 
-			var result = record.pantryitems.find(obj => {
-			  return obj.name === ingredient;
+			record.save().then(function(record2){
+				var result = record2.pantryitems.find(obj => {
+				  return obj.name === ingredient.name;
+				});
+
+				if(result!=undefined)
+				{
+					res.send('succesfully added '+String(result.name)+' to the pantry');
+				}
+				else
+				{
+					res.send('There exists no such item');
+				}
 			});
-
-			if(result!=undefined)
-			{
-				res.send('succesfully added '+String(result.name)+'to the pantry');
-			}
-			else
-			{
-				res.send('There exists no such item');
-			}
-		});
+		}
+		else
+		{
+			res.send('could not find user by that key');
+		}
 	});
 });
 //

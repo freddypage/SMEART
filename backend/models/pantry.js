@@ -9,8 +9,8 @@ const IngredientSchema = new Schema({
 
 
 const PantrySchema = new Schema({
-	username: { type : String , unique : true, min: [6, 'minimun 6 characters in username'], required:true},
-	password: {type:String, min[6, 'min 6 characters in password'], required:true},
+	username: { type : String , unique : true, required:true},
+	password: {type:String, required:true},
 	location: Number,
 	budget: Number,
 	pantryitems: [IngredientSchema]
