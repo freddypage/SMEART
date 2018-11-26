@@ -3,83 +3,50 @@
 
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require('cors');
+var path = require('path');
+var bodyparser = require('body-parser');
 var app = express();
 
 //const pantry = require('models/pantry');
 //ES6 Promises
 //connect to the server: 
 
-const port = process.env.PORT || 3001;
 
 
+//Mongoose -> connects to MongoDB
+//Establish connection with server
 mongoose.Promise = global.Promise;
-mongoose.set('useFindAndModify', false)
+mongoose.set('useFindAndModify', false);
 
-mongoose.connect('mongodb://localhost/smeart',{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/smeart',{ useNewUrlParser: true });
 
 mongoose.connection.once('open',function(){
-	console.log('Connection has been made');
+	console.log('Connection has been made to port 27017');
 }).on('error',function(error)
 {
 	console.log('Connection error: ',error);
 }); //on checks every error that occurs
+//
 
 
-//routes
-app.get('/', (req, res) => {
-    res.send('Hello Express')
-});
-app.listen(process.env.PORT || 3000)
-
-app.use((req, res, next) => {
-  res.status(404).send('<h2 align=center>Page Not Found!</h2>');
-});
-// start the server
-app.listen(port,() => {
-  console.log(`App Server Listening at ${port}`);
-});
-/*
-
-
-const express = require('express');
-import path from 'path';
-import bodyParser from 'body-parser';
-import logger from 'morgan';
-import mongoose from 'mongoose';
-import bb from 'express-busboy';
-// import routes
-import todoRoutes from './routes/todo.server.route';
-// define our app using express
-const app = express();
-// express-busboy to parse multipart/form-data
-bb.extend(app);
-// allow-cors
-app.use(function(req,res,next){
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-})
-// configure app
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended:true }));
-app.use(express.static(path.join(__dirname, 'public')));
-// set the port
+//Express stuff
 const port = process.env.PORT || 3001;
-// connect to database
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/mern-todo-app', {
-  useMongoClient: true,
+const route = require('./routes/route');
+
+app.use(cors());
+app.use(bodyparser.json());
+//defines the path of the folder
+app.use(express.static(path.join(__dirname,'public')));
+//Listen in to ports and route the requests
+app.get('/', (req, res) => {
+    res.send('Hello Express'); //sends the message to the server root
 });
-app.use('/api', todoRoutes);
-app.get('/', (req,res) => {
-  return res.end('Api working');
-})
-// catch 404
-app.use((req, res, next) => {
-  res.status(404).send('<h2 align=center>Page Not Found!</h2>');
-});
-// start the server
+
+app.use('/api', route);
+// start listening to the port
 app.listen(port,() => {
   console.log(`App Server Listening at ${port}`);
-});*/
+});
+
+
