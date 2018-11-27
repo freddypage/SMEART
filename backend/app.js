@@ -7,12 +7,9 @@ const cors = require('cors');
 var path = require('path');
 var bodyparser = require('body-parser');
 var app = express();
-
 //const pantry = require('models/pantry');
 //ES6 Promises
 //connect to the server: 
-
-
 
 //Mongoose -> connects to MongoDB
 //Establish connection with server
@@ -32,7 +29,8 @@ mongoose.connection.once('open',function(){
 
 //Express stuff
 const port = process.env.PORT || 3001;
-const route = require('./routes/route');
+const route = require('./routes/pantry-route');
+const route2 = require('./routes/wallet-route');
 
 app.use(cors());
 app.use(bodyparser.json());
@@ -43,7 +41,9 @@ app.get('/', (req, res) => {
     res.send('Hello Express'); //sends the message to the server root
 });
 
-app.use('/api', route);
+app.use('/pantry', route);
+
+//app.use('/wallet', route2);
 // start listening to the port
 app.listen(port,() => {
   console.log(`App Server Listening at ${port}`);
