@@ -1,29 +1,28 @@
 const express = require('express');
 const router = express.router();
 
-
-
 // ROUTES
 // ==========
 
-app.get("/", function(req, res) {
-    res.render("home");
+router.get("/eatin", isLoggedIn,function(req, res) {
+    res.render("eatin");
 });
 
-app.get("/secret", isLoggedIn,function(req, res) {
-    res.render("secret");
+
+router.get("/eatout", isLoggedIn,function(req, res) {
+    res.render("eatout");
 });
 
 // AUTH ROUTES
 // ===========
 
 // show signup form
-app.get("/register", function(req, res) {
+router.get("/register", function(req, res) {
     res.render("register");
 });
 
 //handling user sign up
-app.post("/register", function(req, res) {
+router.post("/register", function(req, res) {
     req.body.username
     req.body.password
     User.register(new User({username: req.body.username}), req.body.password, function(err, user) {
@@ -39,18 +38,18 @@ app.post("/register", function(req, res) {
 
 //LOGIN ROUTES
 //render login form
-app.get("/login", function(req, res) {
+router.get("/login", function(req, res) {
     res.render("login");
 });
 
 //login logic
-app.post("/login", passport.authenticate("local", { //this is a middleware (code that runs before the callback)
+router.post("/login", passport.authenticate("local", { //this is a middleware (code that runs before the callback)
     successRedirect: "/secret", 
     failureRedirect: "/login"
 }), function(req, res) {
 });
 
-app.get("/logout", function(req, res) {
+router.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
 });

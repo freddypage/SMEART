@@ -31,6 +31,7 @@ mongoose.connection.once('open',function(){
 const port = process.env.PORT || 3001;
 const route = require('./routes/pantry-route');
 const route2 = require('./routes/wallet-route');
+const authRoute = require('./routes/auth-route');
 
 app.use(cors());
 app.use(bodyparser.json());
@@ -57,6 +58,8 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.use('/auth', authRoute);
 
 //app.use('/wallet', route2);
 // start listening to the port
