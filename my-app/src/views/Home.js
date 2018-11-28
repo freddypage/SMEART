@@ -14,6 +14,7 @@ export default class Home extends Component {
             <div id='container'>
                 <h1 style={title}> EAT SMART </h1>
                 <a href="login">Login</a>
+                <p>{this.props.data}</p>
             </div>
         )
     } 

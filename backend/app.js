@@ -37,6 +37,7 @@ app.use(bodyparser.json());
 //defines the path of the folder
 app.use(express.static(path.join(__dirname,'public')));
 //Listen in to ports and route the requests
+//This is serving the database (?)
 app.get('/', (req, res) => {
     res.send('Hello Express'); //sends the message to the server root
 });
@@ -49,4 +50,11 @@ app.listen(port,() => {
   console.log(`App Server Listening at ${port}`);
 });
 
+//Connecting Express to React app - Anthony
+
+//create a GET route for React app to communicate with
+//we will fetch this within our client-side React
+app.get('/express-backend', (req, res) => {
+  res.send({express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT!'});
+})
 
