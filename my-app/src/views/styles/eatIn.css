@@ -1,0 +1,64 @@
+
+
+.eat-in {
+
+	background-color: black;
+	color: white;
+	display: inline-block;
+	width: 100%;
+    height:100%;
+	
+}
+
+.main {
+	background-color: red;
+}
+
+.main-bar, .side-bar {
+	position: relative;
+	float: left;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    display: inline-block;
+    border: none;
+    background: #CCC;
+    text-align: center;
+}
+
+.main-bar {
+    width: 75%;
+    height: 100vh;
+    background-color: #C7DBD9;
+    
+
+}
+.side-bar {
+    width: 25%;
+    height: 100vh;
+    background-color: #9DB5B2;
+}
+
+.p {
+	text-align: center;
+}
+
+.pantry, .new-ingredient {
+	display: inline-block;
+	border: 1px solid #C7DBD9;
+	border-radius: 25px;	
+	width: 85%;
+	height: 65%;
+	background-color: #C7DBD9;
+	text-align: left;
+
+}
+
+.pantry, .new-ingredient >p{
+	padding-left: 20px;
+}
+
+.new-ingredient {
+	width: 90%;
+	height: 15%;
+}
