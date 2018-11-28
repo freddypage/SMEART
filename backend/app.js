@@ -31,7 +31,7 @@ mongoose.connection.once('open',function(){
 const port = process.env.PORT || 3001;
 const route = require('./routes/pantry-route');
 const route2 = require('./routes/wallet-route');
-const authRoute = require('./routes/auth-route');
+//const authRoute = require('./routes/auth-route');
 
 app.use(cors());
 app.use(bodyparser.json());
@@ -44,22 +44,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/pantry', route);
-
-//AUTH CONFIG
-app.use(require("express-session")({
-    secret: "wubbalubbadubdub data in the session is encoded and decoded using this key", 
-    resave: false,
-    saveUninitialized: false
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-//app.use('/auth', authRoute); //needs fixing once views for signup and register are created
 
 //app.use('/wallet', route2);
 // start listening to the port
