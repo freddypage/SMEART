@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 
 app.use('/pantry', route);
 
-//auth config
+//AUTH CONFIG
 app.use(require("express-session")({
     secret: "wubbalubbadubdub data in the session is encoded and decoded using this key", 
     resave: false,
@@ -59,7 +59,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use('/auth', authRoute);
+//app.use('/auth', authRoute); //needs fixing once views for signup and register are created
 
 //app.use('/wallet', route2);
 // start listening to the port

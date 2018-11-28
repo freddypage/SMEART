@@ -4,13 +4,9 @@ const router = express.router();
 // ROUTES
 // ==========
 
-router.get("/eatin", isLoggedIn,function(req, res) {
-    res.render("eatin");
-});
-
-
-router.get("/eatout", isLoggedIn,function(req, res) {
-    res.render("eatout");
+//some route that is only accessible if user is logged in
+router.get("/secret", isLoggedIn,function(req, res) {
+    //res.render("eatin");
 });
 
 // AUTH ROUTES
