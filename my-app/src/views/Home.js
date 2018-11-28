@@ -31,17 +31,11 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-      <p>{this.props.data}</p>
+        <p>{this.props.data}</p>
 
-
-        <Header 
-
-        />
+        <Header />
  
         <div className="Container">
-
-
-
           <Box 
             className="left"
             handleClick={this.handleClick}
@@ -50,17 +44,13 @@ class Home extends Component {
             href={"eatIn"}
           />
 
-
           <Box 
             className="right"
             title={"Eat Out"}
             school={"McGill University"}
             href={"eatOut"}
           />
-
         </div>
-
-
       </div>
       
     );

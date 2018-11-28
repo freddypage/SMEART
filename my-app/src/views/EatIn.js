@@ -31,9 +31,7 @@ class EatIn extends Component {
   render() {
     return (
       <div className="eat-in">
-
-       
-
+        <Header />
         <div className="side-bar">  
 
           <p>Pantry</p>
