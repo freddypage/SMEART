@@ -43,6 +43,20 @@ app.get('/', (req, res) => {
 
 app.use('/pantry', route);
 
+//auth config
+app.use(require("express-session")({
+    secret: "wubbalubbadubdub data in the session is encoded and decoded using this key", 
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 //app.use('/wallet', route2);
 // start listening to the port
 app.listen(port,() => {
