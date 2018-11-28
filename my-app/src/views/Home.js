@@ -1,21 +1,70 @@
 import React, { Component } from 'react';
+//Import for Router
+import {BrowserRouter, Route} from 'react-router-dom';
 
-const title = {
-    fontSize: '28px',
-    color: 'red',
-}
+import './styles/home.css';
 
-export default class Home extends Component {
-    state = {
+//Components
+import Header from '../components/headerComponent/header'; 
+import Box from '../components/bodyComponent/box';
+import SideBar from '../components/bodyComponent/sideBar';
+
+
+class Home extends Component {
+
+  constructor(props) {
+    super(props);   
+    this.state = {
+      isShow: true
     }
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-    render () {
-        return (
-            <div id='container'>
-                <h1 style={title}> EAT SMART </h1>
-                <a href="login">Login</a>
-                <p>{this.props.data}</p>
-            </div>
-        )
-    } 
+
+  handleClick() {
+    var that = this;
+    this.setState({ isShow: !that.state.isShow })
+  }
+
+
+
+  render() {
+    return (
+      <div className="App">
+      <p>{this.props.data}</p>
+
+
+        <Header 
+
+        />
+ 
+        <div className="Container">
+
+
+
+          <Box 
+            className="left"
+            handleClick={this.handleClick}
+            title={"Eat In"}
+            school={"UBC"}
+            href={"eatIn"}
+          />
+
+
+          <Box 
+            className="right"
+            title={"Eat Out"}
+            school={"McGill University"}
+            href={"eatOut"}
+          />
+
+        </div>
+
+
+      </div>
+      
+    );
+  }
 }
+
+export default Home;
