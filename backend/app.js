@@ -44,8 +44,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/pantry', route);
+app.use('/wallet', route2);
 
-//app.use('/wallet', route2);
 // start listening to the port
 app.listen(port,() => {
   console.log(`App Server Listening at ${port}`);
@@ -57,5 +57,6 @@ app.listen(port,() => {
 //we will fetch this within our client-side React
 app.get('/express-backend', (req, res) => {
   res.send({express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT!'});
-})
+});
+
 
