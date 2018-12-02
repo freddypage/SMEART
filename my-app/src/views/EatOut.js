@@ -9,20 +9,12 @@ import Header from '../components/headerComponent/header';
 import Box from '../components/bodyComponent/box';
 import SideBar from'../components/bodyComponent/sideBar';
 import Map from '../components/bodyComponent/map';
+//import Map from '../components/eatOutComponents/map';
 
-class EatIn extends Component {
+class EatOut extends Component {
 
   constructor(props) {
-    super(props);   
-    this.state = {
-      isShow: true
-    }
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    var that = this;
-    this.setState({ isShow: !that.state.isShow })
+    super(props);
   }
 
   render() {
@@ -44,4 +36,4 @@ class EatIn extends Component {
   }
 }
 
-export default EatIn;
+export default EatOut;

@@ -13,20 +13,8 @@ import SideBar from '../components/bodyComponent/sideBar';
 class Home extends Component {
 
   constructor(props) {
-    super(props);   
-    this.state = {
-      isShow: true
-    }
-    this.handleClick = this.handleClick.bind(this);
+    super(props);
   }
-
-
-  handleClick() {
-    var that = this;
-    this.setState({ isShow: !that.state.isShow })
-  }
-
-
 
   render() {
     return (
@@ -38,7 +26,6 @@ class Home extends Component {
         <div className="Container">
           <Box 
             className="left"
-            handleClick={this.handleClick}
             title={"Eat In"}
             school={"UBC"}
             href={"eatIn"}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+//import Marker from './Marker';
 
+//CONST COMPONENT VERSION - REVERT TO THIS IF EXAMPLE DOESN'T WORK
 const AnyReactComponent = ({ text }) => <div style={{
     width: '0',
     height: '0',
@@ -15,7 +17,7 @@ class Map extends Component {
       lat: 45.501690,
       lng: -73.567253
     },
-    zoom: 11
+    zoom: 14
   };
 
   render() {
@@ -30,7 +32,6 @@ class Map extends Component {
           <AnyReactComponent
             lat={45.501690}
             lng={-73.567253}
-            
           />
           <AnyReactComponent
             lat={45.491504}

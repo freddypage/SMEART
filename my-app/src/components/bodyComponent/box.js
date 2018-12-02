@@ -13,7 +13,6 @@ class Box extends Component {
 
 	      	<button 
 	      		className="button"
-	      		onClick = {this.props.handleClick} 
 	      	>
 	      		<a href={this.props.href}>{this.props.title}</a>
 	      	</button>

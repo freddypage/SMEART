@@ -5,8 +5,13 @@ const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 var path = require('path');
+
+//middleware: allows us to read data from <form> elements (i.e. when POSTing)
 var bodyparser = require('body-parser');
+
+//creates our express application, we call it app
 var app = express();
+
 //const pantry = require('models/pantry');
 //ES6 Promises
 //connect to the server: 

@@ -13,20 +13,8 @@ import PantryItem from '../components/bodyComponent/pantryItem';
 class EatIn extends Component {
 
   constructor(props) {
-    super(props);   
-    this.state = {
-      isShow: true
-    }
-    this.handleClick = this.handleClick.bind(this);
+    super(props);
   }
-
-
-  handleClick() {
-    var that = this;
-    this.setState({ isShow: !that.state.isShow })
-  }
-
-
 
   render() {
     return (
