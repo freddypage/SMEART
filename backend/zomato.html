@@ -27,6 +27,56 @@
 	<div id="out"></div>
 
 	<script>
+		function getEatStRestaurants(lat, long){
+			//https://developers.eatstreet.com/endpoint/search
+			//90fd4587554469b1f15b4f2e73e761809f4b4bcca52eedca
+
+			var request = new XMLHttpRequest();
+
+
+			console.log(String($("#city").val()));
+			// Open a new connection, using the GET request on the URL endpoint
+			request.open('GET', 'https://api.eatstreet.com/publicapi/v1/restaurant/search?latitude='+lat+'&longitude='+long+'&method=both&pickup-radius=2', true);
+			request.setRequestHeader("X-Access-Token","55919a441031ca24" );
+			// request.setRequestHeader("lat",lat);
+			// request.setRequestHeader("lon",long);
+			// request.setRequestHeader("radius",3000);
+
+
+			request.onload = function () {
+				// Begin accessing JSON data here
+				var rest_keys = [];
+				var data = JSON.parse(this.response);
+				console.log(this.response);
+				//visualize response in console
+				//check if success
+				if (request.status >= 200 && request.status < 400) {
+					console.log("success");
+					if(data.restaurants.length<0){
+						console.log("no restaurants nearby/found");
+					}
+					
+
+					for (var i = 0; i < data.restaurants.length; i++) { 
+					    console.log(data.restaurants[i].name);
+					    rest_keys.push(data.restaurants[i].apiKey)
+					}
+				}
+				else {
+					console.log("FAILED");
+				}
+			}
+
+			// Send request
+			request.send();
+
+			var request2 = new XMLHttpRequest();
+			request2.open('GET', 'https://developers.eatstreet.com/endpoint/restaurant-menu, true)',true)
+			request2.setRequestHeader("X-Access-Token",'55919a441031ca24');
+			request2.setRequestHeader("apiKey","409b7c6b66fccf729931efcaf79ea497" );
+
+			//https://developers.eatstreet.com/endpoint/restaurant-menu
+		}
 		function getLocationGeo(lat,long){
 			// Create a request variable and assign a new XMLHttpRequest object to it.
 			var request = new XMLHttpRequest();
@@ -34,7 +84,7 @@
 
 			console.log(String($("#city").val()));
 			// Open a new connection, using the GET request on the URL endpoint
-			request.open('GET', 'https://developers.zomato.com/api/v2.1/search?lat='+lat+'&lon='+long+'&radius='+'3000', true);
+			request.open('GET', 'https://developers.zomato.com/api/v2.1/search?lat='+lat+'&lon='+long+'&radius='+'500', true);
 			request.setRequestHeader("user-key","409b7c6b66fccf729931efcaf79ea497" );
 			// request.setRequestHeader("lat",lat);
 			// request.setRequestHeader("lon",long);
@@ -57,6 +107,7 @@
 
 					for (var i = 0; i < data.restaurants.length; i++) { 
 					    console.log(data.restaurants[i].restaurant.name);
+					    console.log('\t'+"Cost for 1 person: "+data.restaurants[i].restaurant.average_cost_for_two);
 					}
 
 					// data.restaurants.forEach(restaurant => {
@@ -136,6 +187,7 @@
 
 					for (var i = 0; i < data.restaurants.length; i++) { 
 					    console.log(data.restaurants[i].restaurant.name);
+					    console.log('\t'+"Cost for 1 person: "+data.restaurants[i].average_cost_for_two);
 					}
 
 					// data.restaurants.forEach(restaurant => {
@@ -171,6 +223,8 @@
 		    // output.appendChild(img);
 
 		    getLocationGeo(latitude,longitude);
+
+		   // getEatStRestaurants(latitude,longitude);
 		  }
 
 		  function error() {

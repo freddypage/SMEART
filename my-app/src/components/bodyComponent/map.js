@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div style={{
+    width: '0',
+    height: '0',
+    borderLeft: '10px solid transparent',
+    borderRight: '10px solid transparent',
+    borderTop: '20px solid red'
+  }}>{text}</div>;
 
 class Map extends Component {
   static defaultProps = {
@@ -22,9 +28,13 @@ class Map extends Component {
           defaultZoom={this.props.zoom}
         >
           <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text={'Kreyser Avrora'}
+            lat={45.501690}
+            lng={-73.567253}
+            
+          />
+          <AnyReactComponent
+            lat={45.491504}
+            lng={-73.577260}
           />
         </GoogleMapReact>
       </div>
