@@ -26,6 +26,7 @@ class Map extends Component {
           bootstrapURLKeys={{ key: "AIzaSyCGpT0dJD2ojaGOx_bVq20bIqNt8ggHkYU" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          id='map'
         >
           <AnyReactComponent
             lat={45.501690}

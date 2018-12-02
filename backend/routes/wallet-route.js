@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 //just for testing
 const Pantry = require('../models/pantry');
+const request = require('request');
 
 //add location to the user
 router.post('/location/:id',(req,res,next)=>{
@@ -58,6 +59,60 @@ router.get(('/:id'),(req,res,next)=>{
 			res.send("could not find");
 		}
   	});
+});
+
+router.post(('/loc'),(req,res,next)=>{
+	var lat = req.body.lattitude;
+	var long = req.body.longitude;
+
+	var options ={
+		headers:{
+			"user-key":"409b7c6b66fccf729931efcaf79ea497"
+		}
+	}
+
+	request.get('https://developers.zomato.com/api/v2.1/search?lat='+lat+'&lon='+long+'&radius='+'500',options,function(err,zres,body){
+	  if(err){
+	  	console.log("problem");
+	  }
+	  if(zres.statusCode !== 200 )
+	  {
+	  	console.log(zres.statusCode+" Error");
+	  }
+	  else
+	  {
+	  	console.log("success!");
+	  	res.send(body);
+	  }
+	  
+	});
+
+// req.on('error', function(e) {
+//   console.log('ERROR: ' + e.message);
+// });
+
+// 	var lat = req.body.lattitude;
+// 	var long = req.body.longitude;
+
+// 	var request = new XMLHttpRequest();
+// 	// Open a new connection, using the GET request on the URL endpoint
+// 	request.open('GET', 'https://developers.zomato.com/api/v2.1/search?lat='+lat+'&lon='+long+'&radius='+'500', true);
+// 	request.setRequestHeader("user-key","409b7c6b66fccf729931efcaf79ea497" );
+
+// 	request.onload = function () {
+// 		var data = JSON.parse(this.response);
+
+// 		if (request.status >= 200 && request.status < 400) {
+// 			res.send(data.restaurants);
+// 		}
+// 		else {
+// 			console.log("FAILED");
+// 			res.send("API Request Failed");
+// 		}
+// 	}
+
+	// Send request
+	// request.send();
 });
 
 module.exports = router; 

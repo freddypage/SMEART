@@ -10,6 +10,8 @@ import Box from '../components/bodyComponent/box';
 import SideBar from'../components/bodyComponent/sideBar';
 import Map from '../components/bodyComponent/map';
 
+
+
 class EatIn extends Component {
 
   constructor(props) {
