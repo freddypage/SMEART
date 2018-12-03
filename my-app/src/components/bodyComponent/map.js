@@ -4,6 +4,8 @@ import Pin from '../bodyComponent/pin';
 //import Marker from './Marker';
 
 class Map extends Component {
+
+
   static defaultProps = {
     center: {
       lat: 45.501690,
@@ -12,9 +14,38 @@ class Map extends Component {
     zoom: 14
   };
 
- 
+ checkBudget(price, budget)
+    {
+      if(price<=budget)
+      {
+        return 'low';
+      }
+      else
+      {
+        if(budget/price>1.5)
+        {
+            return 'high';
+        }
+        else
+        {
+          return 'med';
+        }
+      }
+    }
+
+  _onBoundsChange = (centr, zoom /* , bounds, marginBounds */) => {
+    //console.log(centr);
+    this.props.callback(centr);
+    this.setState({center:centr});
+    
+  }
 
   render(props) {
+
+
+
+    const budg = this.props.budget;
+
 
      const Pins = this.props.pins.map((pin, index) => (
         <Pin
@@ -22,6 +53,7 @@ class Map extends Component {
           lat={pin.lat}
           lng={pin.lng}
           name={pin.name}
+          priceLevel={this.checkBudget(pin.price,budg)}
           pin={pin} />
       ));
 
@@ -32,6 +64,7 @@ class Map extends Component {
           bootstrapURLKeys={{ key: "AIzaSyCGpT0dJD2ojaGOx_bVq20bIqNt8ggHkYU" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          onBoundsChange={this._onBoundsChange}
           id='map'
         >
           <Pin lat={45.501690} lng={-73.567253}/>
