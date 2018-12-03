@@ -6,10 +6,8 @@ import './styles/eatOut.css';
 
 //Components
 import Header from '../components/headerComponent/header'; 
-import Box from '../components/bodyComponent/box';
-import SideBar from'../components/bodyComponent/sideBar';
-import Map from '../components/bodyComponent/map';
-//import Map from '../components/eatOutComponents/map';
+//import Map from '../components/bodyComponent/map';
+import Map from '../components/eatOutComponents/map';
 
 class EatOut extends Component {
 

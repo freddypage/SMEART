@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import shouldPureComponentUpdate from 'react-pure-render/function';
+//import shouldPureComponentUpdate from 'react-pure-render/function';
 
 import {greatPlaceStyle, greatPlaceStyleHover} from './mgpwh_styles.js';
 
@@ -14,7 +14,7 @@ export default class MyGreatPlaceWithHover extends Component {
 
   static defaultProps = {};
 
-  shouldComponentUpdate = shouldPureComponentUpdate;
+  //shouldComponentUpdate = shouldPureComponentUpdate;
 
   constructor(props) {
     super(props);
@@ -25,7 +25,6 @@ export default class MyGreatPlaceWithHover extends Component {
 
     return (
        <div style={style}>
-          {this.props.text}
        </div>
     );
   }
