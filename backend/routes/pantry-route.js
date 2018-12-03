@@ -115,6 +115,19 @@ router.post('/deleteitem/:id',(req,res,next)=>{
 	});
 });
 
+router.get('/recipeInfo/:id',(req,res,next)=>{{
+	var recipeId = req.params.id;
+
+	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+recipeId+"/information")
+	.header("X-RapidAPI-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
+	.end(function (result) {
+	  console.log(result.body);
+	  res.send(result.body);
+	});
+
+	}
+});
+
 //Gets the spoonacular recipes which match the pantry
 router.get('/recipes/:id',(req,res,next)=>{
 
@@ -156,8 +169,7 @@ router.get('/recipes/:id',(req,res,next)=>{
 		}
   	});
 
-  	
-
+  
 	
 });
 
