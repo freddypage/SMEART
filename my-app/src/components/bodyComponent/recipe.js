@@ -7,6 +7,14 @@ class Recipe extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      recipe: {}
+    }
+
+  }
+
+  handleRecipeLink() {
+
   }
 
   renderRecipes(recipe, index) {
@@ -14,13 +22,13 @@ class Recipe extends Component {
     console.log("recipe name", recipe.title)
 
     return(
-      <div className="recipe-container">
+      <div className="recipe-container" target="_blank">
         
         <img src = {recipe.image} className="picture"/>
         
 
         <div className="content">
-          <p>{recipe.title}</p>
+          <p >{recipe.title}</p>
         </div>
       </div>
     );
@@ -34,12 +42,7 @@ class Recipe extends Component {
 
     return (
 
-      
-
         this.props.recipes.map(this.renderRecipes)
-
-      
-
     );
   }
 
