@@ -27,18 +27,19 @@ class EatIn extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDeleteCallback = this.handleDeleteCallback.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
 
   }
 
   componentDidMount() {
-    // fetch('/pantry/recipes/5c0093335bfde80711b2fbff')
-    //   .then(res => {
-    //       console.log(res);
-    //       return res.json()
-    //    })
-    //   .then(recipes => { 
-    //       this.setState({ recipes: recipes })
-    //    });
+    fetch('/pantry/recipes/5c0093335bfde80711b2fbff')
+      .then(res => {
+          console.log(res);
+          return res.json()
+       })
+      .then(recipes => { 
+          this.setState({ recipes: recipes })
+       });
 
     fetch('/pantry/pantry/5c0093335bfde80711b2fbff')
       .then(res => {
@@ -54,17 +55,45 @@ class EatIn extends Component {
 
 
   handleDeleteCallback(index) {
-    console.log("PARENT handleDeleteCallback", index)
-    
-    this.setState({
-        ingredients: this.state.ingredients.filter(function (e, i) {
-        return i !== index;
+
+    fetch('/pantry/deleteitem/5c0093335bfde80711b2fbff', {
+      method: "post",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      //make sure to serialize your JSON body
+      body: JSON.stringify({
+        ingredient: this.state.ingredients[index].name,
       })
-    });
+    })
+      .then(res => {
+        if(res.status === 200) {
+          console.log("succesfully delete")
+              this.setState({
+              ingredients: this.state.ingredients.filter(function (e, i) {
+              return i !== index;
+            })
+          });
+        } else {
+          console.log("Error with deleting item.")
+        }
+      })
   }
 
   handleChange(event) {
     this.setState({ingredient: event.target.value});
+  }
+
+  handleSearch() {
+    fetch('/pantry/recipes/5c0093335bfde80711b2fbff')
+      .then(res => {
+          console.log(res);
+          return res.json()
+       })
+      .then(recipes => { 
+          this.setState({ recipes: recipes })
+       });
   }
 
   handleSubmit(event) {
@@ -114,17 +143,10 @@ class EatIn extends Component {
           } else {
             console.log("Error with adding item")
           }
-  
         }) 
-
-
-
 
       event.preventDefault();
     }
-
-
-    
   }
 
 
@@ -148,18 +170,15 @@ class EatIn extends Component {
           />
     
           <p>New Ingredient</p>
-
-           
+  
           <form onSubmit={this.handleSubmit}>
             <input type="text" id="ingredient" value={this.state.ingredient} placeholder="New ingredient" onChange={this.handleChange} /> 
             <input type="submit" id="submit" value="Add" />
           </form>
 
-          <button id="save">Save & Search</button>
+          <button id="save" onClick={this.handleSearch}>Save & Search</button>
 
-         
         </div>
-
 
         <div className="main-bar">
           <p>Recipes</p>
