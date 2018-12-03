@@ -24,12 +24,21 @@
 // export default SignUp;
 
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter
+} from "react-router-dom";
+
 export default class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      redirect: false
     };
   }
 
@@ -51,7 +60,7 @@ export default class Login extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          this.props.history.push('/');
+          this.setState({redirect: true})
         } else {
           const error = new Error(res.error);
           throw error;
@@ -64,27 +73,33 @@ export default class Login extends Component {
   }
 
   render() {
-    return (
-      <form onSubmit={this.onSubmit}>
-        <h1>Login Below!</h1>
-        <input
-          type="username"
-          name="username"
-          placeholder="Enter username"
-          value={this.state.username}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          value={this.state.password}
-          onChange={this.handleInputChange}
-          required
-        />
-       <input type="submit" value="Submit"/>
-      </form>
-    );
+    if(!this.state.redirect) {
+      return (
+        <form onSubmit={this.onSubmit}>
+          <h1>Sign up Below!</h1>
+          <input
+            type="username"
+            name="username"
+            placeholder="Enter username"
+            value={this.state.username}
+            onChange={this.handleInputChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            required
+          />
+         <input type="submit" value="Submit"/>
+        </form>
+      );
+    } else {
+      return(
+        <Redirect to='/home'/>
+      );
+    }
   }
 }
