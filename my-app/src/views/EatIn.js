@@ -178,6 +178,7 @@ class EatIn extends Component {
 
           <button id="save" onClick={this.handleSearch}>Save & Search</button>
 
+          </div>
         </div>
 
         <div className="main-bar">
@@ -194,7 +195,6 @@ class EatIn extends Component {
 
 
       </div>
-      
     );
   }
 }
