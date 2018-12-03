@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import Pin from '../bodyComponent/pin';
 //import Marker from './Marker';
-
-//CONST COMPONENT VERSION - REVERT TO THIS IF EXAMPLE DOESN'T WORK
-const AnyReactComponent = ({ text }) => <div style={{
-    width: '0',
-    height: '0',
-    borderLeft: '10px solid transparent',
-    borderRight: '10px solid transparent',
-    borderTop: '20px solid red'
-  }}>{text}</div>;
 
 class Map extends Component {
   static defaultProps = {
@@ -20,7 +12,19 @@ class Map extends Component {
     zoom: 14
   };
 
-  render() {
+ 
+
+  render(props) {
+
+     const Pins = this.props.pins.map((pin, index) => (
+        <Pin
+          // required props
+          lat={pin.lat}
+          lng={pin.lng}
+          name={pin.name}
+          pin={pin} />
+      ));
+
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
@@ -30,14 +34,9 @@ class Map extends Component {
           defaultZoom={this.props.zoom}
           id='map'
         >
-          <AnyReactComponent
-            lat={45.501690}
-            lng={-73.567253}
-          />
-          <AnyReactComponent
-            lat={45.491504}
-            lng={-73.577260}
-          />
+          <Pin lat={45.501690} lng={-73.567253}/>
+          <Pin lat={45.601690} lng={-73.567353}/>
+          {Pins}
         </GoogleMapReact>
       </div>
     );
