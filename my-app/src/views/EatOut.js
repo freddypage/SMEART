@@ -9,8 +9,7 @@ import Header from '../components/headerComponent/header';
 import Box from '../components/bodyComponent/box';
 import SideBar from'../components/bodyComponent/sideBar';
 import Map from '../components/bodyComponent/map';
-
-
+//import Map from '../components/eatOutComponents/map';
 
 class EatOut extends Component {
 
@@ -62,12 +61,6 @@ class EatOut extends Component {
 
     return restaurants;
   };
-  //
-
-  handleClick() {
-    var that = this;
-    this.setState({ isShow: !that.state.isShow })
-  }
 
   render() {
     return (
@@ -89,6 +82,4 @@ class EatOut extends Component {
     );
   }
 }
-
-
 export default EatOut;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Pin from '../bodyComponent/pin';
+//import Marker from './Marker';
 
 class Map extends Component {
   static defaultProps = {
@@ -8,7 +9,7 @@ class Map extends Component {
       lat: 45.501690,
       lng: -73.567253
     },
-    zoom: 11
+    zoom: 14
   };
 
  
