@@ -1,0 +1,8 @@
+.pantry {
+	margin: 0;
+	list-style-type: none;
+}
+
+.li {
+	border-bottom: 1px solid black;
+}

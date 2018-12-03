@@ -1,4 +1,21 @@
+.form{
+    border:none;
+    display:inline-block;
+    background:#C7D8D9;
+}
 
+#wallet{
+    width:50%;
+    margin-right: 5px;
+    font-size:16px;
+    height: auto;
+}
+
+#saveB{
+    width:25%;
+    font-size:16px;
+    height: auto;
+}
 
 .eat-out {
 	background-color: black;

@@ -1,0 +1,20 @@
+.recipe-container {
+	white-space: nowrap;
+	margin-bottom: 10px;
+	padding-top: 10px;
+}
+
+.picture, .content {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.picture {
+	margin-right: 10px;
+	max-width: 20%;
+
+}
+
+.content {
+	width: 60%;
+}

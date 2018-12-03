@@ -6,15 +6,115 @@ import './styles/eatOut.css';
 
 //Components
 import Header from '../components/headerComponent/header'; 
-import Box from '../components/bodyComponent/box';
-import SideBar from'../components/bodyComponent/sideBar';
 import Map from '../components/bodyComponent/map';
 //import Map from '../components/eatOutComponents/map';
 
 class EatOut extends Component {
 
   constructor(props) {
-    super(props);
+    super(props);   
+    this.state = {
+      isShow: true,
+      pins: [],
+      latitude:45.501690,
+      longitude:-73.567353,
+      budget:10
+    }
+
+    this.saveWallet = this.saveWallet.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.coordinatesCallback = this.coordinatesCallback.bind(this);
+  }
+
+  componentDidMount() {
+    // Call our fetch function below once the component mounts
+    // In our package.json we have to add the line "proxy": "http://localhost:3001/"
+    // This will let Webpack know to proxy our API requests to our Express backend that will be running on port 3001
+    this.callBackendAPI()
+      .then(res => console.log(res)) //set data to the response from the fetch request
+      .catch(err => console.log(err));
+    //this.state.restaurants = callBackendAPI()
+  }
+
+  //API REquest
+   callBackendAPI = async () => {
+    console.log("lat:",this.state.latitude ," long: ",  this.state.longitude);
+
+    const response = await fetch('/wallet/loc', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ "lattitude":this.state.latitude,"longitude":this.state.longitude }),
+    });
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message) 
+    }
+
+    var restaurants = [];
+    for (var i = 0; i < body.restaurants.length; i++)
+    {
+      var rest = body.restaurants[i].restaurant;
+      restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,
+        'name':rest.name,'price':rest.average_cost_for_two/2});
+    }
+
+    console.log(body);
+    console.log(restaurants);
+
+    this.setState({pins:restaurants});
+
+    return restaurants;
+  };
+  ///
+  ///
+  //
+
+  geoFindMe() {
+      var output = document.getElementById("out");
+
+      if (!navigator.geolocation){
+        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+        return;
+      }
+
+      function success(position) {
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+      }
+
+      function error() {
+        output.innerHTML = "Unable to retrieve your location";
+      }
+      output.innerHTML = "<p>Locating…</p>";
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+
+  saveWallet(event)
+  {
+    console.log(event.target.value);
+    this.setState({budget:event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('New Wallet Set: ' + this.state.budget);
+    event.preventDefault();
+  }
+
+  coordinatesCallback(center)
+  {
+    console.log("CoordinatesCallback", center);
+
+    this.callBackendAPI()
+      .then(res => console.log(res)) //set data to the response from the fetch request
+      .catch(err => console.log(err));
+
+    this.setState({
+      latitude:center[0],
+      longitude:center[1]});
   }
 
   render() {
@@ -22,18 +122,27 @@ class EatOut extends Component {
       <div className="eat-out">
         <Header />
         <div className="side-bar">  
+          <p><button onClick={this.geoFindMe}>Show my location</button></p>
+          <div id="out"></div>
+
+          <form onSubmit={this.saveWallet}>
+            <input type="text" id="wallet" placeholder="Enter Your Budget" onChange={this.saveWallet} value={this.state.budget}/>
+            <input type="Submit" id="saveB" value="save"/>
+          </form>
 
           <p>Restaurants</p>
 
         </div>
 
         <div className="main-bar">
-            <Map />
+            <Map
+            pins={this.state.pins}
+            callback={this.coordinatesCallback}
+            />
         </div>
 
       </div>
     );
   }
 }
-
 export default EatOut;
