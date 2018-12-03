@@ -31,21 +31,21 @@ class EatIn extends Component {
   }
 
   componentDidMount() {
-    fetch('/pantry/recipes/5c0093335bfde80711b2fbff')
-      .then(res => {
-          console.log(res);
-          return res.json()
-       })
-      .then(recipes => { 
-          this.setState({ recipes: recipes })
-       });
+    // fetch('/pantry/recipes/5c0093335bfde80711b2fbff')
+    //   .then(res => {
+    //       console.log(res);
+    //       return res.json()
+    //    })
+    //   .then(recipes => { 
+    //       this.setState({ recipes: recipes })
+    //    });
 
     fetch('/pantry/pantry/5c0093335bfde80711b2fbff')
       .then(res => {
           console.log(res);
           return res.json()
        })
-      .then(ingredients => { 
+      .then(ingredients => {  
 
           this.setState({ ingredients: ingredients })
     });
@@ -71,16 +71,54 @@ class EatIn extends Component {
     console.log("event", event.target.value)
     var ingredients = this.state.ingredients
 
+    //Creating JSON to be sent to express
+    var body = JSON.stringify({"ingredient": this.state.ingredient})
+
+
     if (this.state.ingredient == "") {
+
         alert("Name must be filled out");
         return false;
-    } else {
-      ingredients.push(this.state.ingredient)
 
-      this.setState({
-        ingredients: ingredients,
-        ingredient: ''
+    } else {
+
+      ingredients.push({
+        _id: "dummyID",
+        name: this.state.ingredient,
+        quantity: 1
       })
+
+      /*
+       Post request to express route
+       */
+      fetch('/pantry/additem/5c0093335bfde80711b2fbff', {
+        method: "post",
+        headers: {
+//          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+
+        //make sure to serialize your JSON body
+        body: JSON.stringify({
+          ingredient: this.state.ingredient,
+        })
+      })
+        .then(res =>  {
+          console.log("POST REQ(add item):", res);
+          if(res.status === 200) {
+            this.setState({
+              ingredients: ingredients,
+              ingredient: ''
+            })
+            return res.json()
+          } else {
+            console.log("Error with adding item")
+          }
+  
+        }) 
+
+
+
 
       event.preventDefault();
     }
@@ -108,7 +146,7 @@ class EatIn extends Component {
             ingredients= {ingredients}
             handleDeleteCallback= {this.handleDeleteCallback}
           />
-
+    
           <p>New Ingredient</p>
 
            
