@@ -17,6 +17,7 @@ import SideBar from'../components/bodyComponent/sideBar';
 class EatIn extends Component {
 
   constructor(props) {
+
     super(props);   
     this.state = {
       ingredients:[],
@@ -97,9 +98,7 @@ class EatIn extends Component {
 
     return (
       <div className="eat-in">
-
-       
-
+        <Header />
         <div className="side-bar">  
 
           <p>Pantry</p>

@@ -11,7 +11,7 @@ const IngredientSchema = new Schema({
 const PantrySchema = new Schema({
 	username: { type : String , unique : true, required:true},
 	password: {type:String, required:true},
-	location: Number,
+	location: String,
 	budget: Number,
 	pantryitems: [IngredientSchema]
 });

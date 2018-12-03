@@ -7,6 +7,9 @@ import Home from './views/home';
 import EatIn from './views/eatIn';
 import EatOut from './views/eatOut';
 
+import Landing from './views/landing';
+import Login from './views/login';
+import SignUp from './views/signup';
 
 //need to wrap HTML in app.js in <BrowserRouter>
 //and give routes to new pages
@@ -39,6 +42,21 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact={true} path='/' render={() => (
+            <div className="landing">
+              <Landing />
+            </div>
+          )}/>
+          <Route exact={true} path='/login' render={() => (
+            <div className="login">
+              <Login />
+            </div>
+          )}/>
+          <Route exact={true} path='/signup' render={() => (
+            <div className="signup">
+              <SignUp />
+            </div>
+          )}/>
+          <Route exact={true} path='/home' render={() => (
             <div className="home">
               <Home 
                 data = {this.state.data}

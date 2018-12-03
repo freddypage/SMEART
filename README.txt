@@ -22,7 +22,22 @@ Schema:
 
 Download ROBOMongo to see your database. The setup is pretty simple.
 
+~ ~ ~ ~ ~ ~~ ~ ~ ~ ~ ~ ~ ~ ~  ~ ~~ ~  ~ ~ ~ ~~  ~ ~ ~  ~ ~~ ~
+FRONT-END DEPENDENCIES
+Run these commands in the my-app directory to keep them local
+React.JS : sudo npm install -g create-react-app
+React Router : npm install --save react-router
+Google Maps: npm install --save google-map-react
+			 yarn add google-map-react
 
+Anthony:
+Added front-end dependency for Google Maps
+"google-map-react": "^1.1.1"
+Install using
+npm install --save google-map-react
+yarn add google-map-react
+https://github.com/google-map-react/google-map-react for reference
+currently using my Google Cloud API key idk if it'll get charged just don't get crazy with it
 
 Anthony:
 To run the react app on localhost, change into the my-app folder and run "yarn start" from terminal

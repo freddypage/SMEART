@@ -3,10 +3,6 @@ import './styles/box.css';
 
 class Box extends Component {
 
-
-
-
-
 	render() {
 
 	  	console.log("Hello world " + this.props.title);
@@ -17,10 +13,7 @@ class Box extends Component {
 
 	      	<button 
 	      		className="button"
-	      		onClick = {this.props.handleClick} 
 	      	>
-	
-
 	      		<a href={this.props.href}>{this.props.title}</a>
 	      	</button>
 

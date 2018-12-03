@@ -5,8 +5,13 @@ const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 var path = require('path');
+
+//middleware: allows us to read data from <form> elements (i.e. when POSTing)
 var bodyparser = require('body-parser');
+
+//creates our express application, we call it app
 var app = express();
+
 //const pantry = require('models/pantry');
 //ES6 Promises
 //connect to the server: 
@@ -31,7 +36,7 @@ mongoose.connection.once('open',function(){
 const port = process.env.PORT || 3001;
 const route = require('./routes/pantry-route');
 const route2 = require('./routes/wallet-route');
-const authRoute = require('./routes/auth-route');
+//const authRoute = require('./routes/auth-route');
 
 app.use(cors());
 app.use(bodyparser.json());
@@ -44,24 +49,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/pantry', route);
+app.use('/wallet', route2);
 
-//AUTH CONFIG
-app.use(require("express-session")({
-    secret: "wubbalubbadubdub data in the session is encoded and decoded using this key", 
-    resave: false,
-    saveUninitialized: false
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-//app.use('/auth', authRoute); //needs fixing once views for signup and register are created
-
-//app.use('/wallet', route2);
 // start listening to the port
 app.listen(port,() => {
   console.log(`App Server Listening at ${port}`);
@@ -73,5 +62,6 @@ app.listen(port,() => {
 //we will fetch this within our client-side React
 app.get('/express-backend', (req, res) => {
   res.send({express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT!'});
-})
+});
+
 

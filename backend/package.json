@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "node C:/Users/Fred/Documents/GitHub/SMEART/backend/node_modules/mocha/bin/mocha",
-    "start": "node index.js",
+    "start": "node app.js",
     "dboff": "killall mongod",
     "watch": "nodemon index.js",
     "dbon": "C:/Users/Fred/Documents/GitHub/SMEART/node_modules/mongod/Mongod --dbpath db",
@@ -28,6 +28,7 @@
     "mongoose": "^5.3.14",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.6",
+    "request": "^2.88.0",
     "superagent": "^4.0.0",
     "unirest": "^0.5.1"
   },
