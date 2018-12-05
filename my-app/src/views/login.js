@@ -64,12 +64,17 @@ export default class Login extends Component {
         //var Router = require('react-router');
         //Router.browserHistory.push('/home');
         console.log("hello world")
-        this.setState({redirect: true})
-
+        console.log(res);
+        return res.json();
       } else {
         const error = new Error(res.error);
         throw error;
       }
+    }).then(response=>
+    {
+      console.log(response);
+      this.setState({redirect: true});
+      this.props.callback(response.id);
     })
     .catch(err => {
       console.error(err);

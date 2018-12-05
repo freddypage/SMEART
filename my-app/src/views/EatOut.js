@@ -18,7 +18,8 @@ class EatOut extends Component {
       pins: [],
       latitude:45.501690,
       longitude:-73.567353,
-      budget:10
+      budget:10,
+      data:''
     }
 
     this.saveWallet = this.saveWallet.bind(this);
@@ -27,6 +28,7 @@ class EatOut extends Component {
   }
 
   componentDidMount() {
+    this.setState({id:this.props.data});
     // Call our fetch function below once the component mounts
     // In our package.json we have to add the line "proxy": "http://localhost:3001/"
     // This will let Webpack know to proxy our API requests to our Express backend that will be running on port 3001
@@ -58,7 +60,7 @@ class EatOut extends Component {
     {
       var rest = body.restaurants[i].restaurant;
       restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,
-        'name':rest.name,'price':rest.average_cost_for_two/2});
+        'name':rest.name,'price':rest.average_cost_for_two/2,'budget':this.state.budget});
     }
 
     console.log(body);
@@ -107,14 +109,16 @@ class EatOut extends Component {
   coordinatesCallback(center)
   {
     console.log("CoordinatesCallback", center);
+    
+    this.setState({
+      latitude:center[0],
+      longitude:center[1]});
 
     this.callBackendAPI()
       .then(res => console.log(res)) //set data to the response from the fetch request
       .catch(err => console.log(err));
 
-    this.setState({
-      latitude:center[0],
-      longitude:center[1]});
+    
   }
 
   render() {
@@ -125,9 +129,9 @@ class EatOut extends Component {
           <p><button onClick={this.geoFindMe}>Show my location</button></p>
           <div id="out"></div>
 
-          <form onSubmit={this.saveWallet}>
+          <form>
             <input type="text" id="wallet" placeholder="Enter Your Budget" onChange={this.saveWallet} value={this.state.budget}/>
-            <input type="Submit" id="saveB" value="save"/>
+            <input type="Submit" id="saveB" value="save" onClick={this.handleSubmit}/>
           </form>
 
           <p>Restaurants</p>

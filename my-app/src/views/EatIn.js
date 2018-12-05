@@ -22,7 +22,8 @@ class EatIn extends Component {
     this.state = {
       ingredients:[],
       ingredient:'',
-      recipes: [] 
+      recipes: [] ,
+      id: this.props.id
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,31 +33,36 @@ class EatIn extends Component {
   }
 
   componentDidMount() {
-    fetch('/pantry/recipes/5c0093335bfde80711b2fbff')
-      .then(res => {
-          console.log(res);
-          return res.json()
-       })
-      .then(recipes => { 
-          this.setState({ recipes: recipes })
-       });
+    console.log("DATA:",this.props.data)
+    this.setState({id:this.props.data}, function() {
+      console.log("ID:",this.state.id);
+      fetch('/pantry/recipes/'+this.state.id)
+        .then(res => {
+            console.log("hello",res);
+            return res.json()
+         })
+        .then(recipes => { 
+            this.setState({ recipes: recipes })
+         });
 
-    fetch('/pantry/pantry/5c0093335bfde80711b2fbff')
-      .then(res => {
-          console.log(res);
-          return res.json()
-       })
-      .then(ingredients => {  
+      fetch('/pantry/pantry/'+this.state.id)
+        .then(res => {
+            console.log(res);
+            return res.json()
+         })
+        .then(ingredients => {  
 
-          this.setState({ ingredients: ingredients })
+            this.setState({ ingredients: ingredients })
+      });
     });
+    
 
   }
 
 
   handleDeleteCallback(index) {
 
-    fetch('/pantry/deleteitem/5c0093335bfde80711b2fbff', {
+    fetch('/pantry/deleteitem/'+this.state.id, {
       method: "post",
       headers: {
         'Content-Type': 'application/json'
@@ -86,7 +92,7 @@ class EatIn extends Component {
   }
 
   handleSearch() {
-    fetch('/pantry/recipes/5c0093335bfde80711b2fbff')
+    fetch('/pantry/recipes/'+this.state.id)
       .then(res => {
           console.log(res);
           return res.json()
@@ -120,7 +126,7 @@ class EatIn extends Component {
       /*
        Post request to express route
        */
-      fetch('/pantry/additem/5c0093335bfde80711b2fbff', {
+      fetch('/pantry/additem/'+this.state.id, {
         method: "post",
         headers: {
 //          'Accept': 'application/json',
@@ -178,7 +184,7 @@ class EatIn extends Component {
 
           <button id="save" onClick={this.handleSearch}>Save & Search</button>
 
-          </div>
+         
         </div>
 
         <div className="main-bar">

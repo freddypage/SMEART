@@ -40,7 +40,7 @@ router.post("/signup", function(req, res) {
             })
         }
         passport.authenticate("local")(req, res, function() { //log user in, take care of everything in the session, run serializefield and use the local strategy
-            res.sendStatus(200);
+            return res.json({id:user.id});
         });
     });
 });
@@ -66,12 +66,14 @@ function authenticate(req, res, next)  {
         error: 'Incorrect email or password'
       }); 
     }
-    req.logIn(user, function(err) {
-      if (err) { 
-        return next(err); 
-      }
-      return res.sendStatus(200);
-    });
+    else{
+      req.logIn(user, function(err) {
+        if (err) { 
+          return next(err); 
+        }
+        return res.json({id:user.id});
+      });
+    }
   })(req, res, next);
 }
 

@@ -53,7 +53,8 @@ class Map extends Component {
           lat={pin.lat}
           lng={pin.lng}
           name={pin.name}
-          priceLevel={this.checkBudget(pin.price,budg)}
+          price={pin.price}
+          budget={pin.budget}
           pin={pin} />
       ));
 
@@ -67,8 +68,6 @@ class Map extends Component {
           onBoundsChange={this._onBoundsChange}
           id='map'
         >
-          <Pin lat={45.501690} lng={-73.567253}/>
-          <Pin lat={45.601690} lng={-73.567353}/>
           {Pins}
         </GoogleMapReact>
       </div>

@@ -60,13 +60,18 @@ export default class Login extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          this.setState({redirect: true})
+          return res.json();
         } else {
           const error = new Error(res.error);
           throw error;
         }
-      })
-      .catch(err => {
+      }).then(response=>
+      {
+        console.log(response);
+        console.log(response.id);
+        this.setState({redirect: true});
+        this.props.callback(response.id);
+      }).catch(err => {
         console.error(err);
         alert('Error signing up, please try again with a different username');
       });

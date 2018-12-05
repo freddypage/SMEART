@@ -3,7 +3,7 @@ const http = require('http');
 const unirest = require('unirest');
 const router = express.Router();
 //just for testing
-const Pantry = require('../models/pantry');
+const Pantry = require('../models/user');
 //const PostController = require('../CRUD/controller');
 
 //geting pantry items
@@ -24,28 +24,28 @@ router.get('/pantry/:id',(req,res,next)=>{
 
 //!--CREATE--!
 //making user
-router.post('/makeuser',(req,res,next)=>{
+// router.post('/makeuser',(req,res,next)=>{
 
-	var newUser = new Pantry({
-		username: req.body.username,
-		password: req.body.password,
-		pantryitems: []
-	});
+// 	var newUser = new Pantry({
+// 		username: req.body.username,
+// 		password: req.body.password,
+// 		pantryitems: []
+// 	});
 
 
-	newUser.save(function(err){
-		if(err)
-		{
-			if (err.name === 'MongoError' && err.code === 11000) {
-				// Duplicate username
-				return res.status(500).send({ succes: false, message: 'User already exist!' });
-			}
-			// Some other error
-			return res.status(500).send(err);
-	    }
-	    res.send({success:true, message:'Succesfully added user: '+newUser.username});
-	});
-});
+// 	newUser.save(function(err){
+// 		if(err)
+// 		{
+// 			if (err.name === 'MongoError' && err.code === 11000) {
+// 				// Duplicate username
+// 				return res.status(500).send({ succes: false, message: 'User already exist!' });
+// 			}
+// 			// Some other error
+// 			return res.status(500).send(err);
+// 	    }
+// 	    res.send({success:true, message:'Succesfully added user: '+newUser.username});
+// 	});
+// });
 
 //!--UPDATE--!
 //adding pantryitem
@@ -140,6 +140,7 @@ router.get('/recipes/:id',(req,res,next)=>{
 	    	//URL for the apirequest
 	    	var apiRequestH = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&fillIngredients=true&ranking=1&ingredients=";
 
+	    	console.log('problem?');
 			for (var i = 0; i < usr_pantry.length; i++)
 			{
 				apiRequestH += String(usr_pantry[i].name)
@@ -150,15 +151,19 @@ router.get('/recipes/:id',(req,res,next)=>{
 				console.log(usr_pantry[i].name+'\n');
 			}
 
-			console.log(apiRequestH)
+			console.log(apiRequestH);
 			//"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=5&ranking=1&ingredients=apples%2Cflour%2Csugar")
 			
 
 
-
+			console.log('works');
+			// unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ingredients=carrots%2Cginger")
+			// .header("X-RapidAPI-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
+			// .end(function (result) {
+			//   console.log(result.status, result.headers, result.body);
+			// });
 			unirest.get(apiRequestH)
-			.header("X-Mashape-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
-			.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
+			.header("X-RapidAPI-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
 			.end(function (result) {
 			  console.log(result.status, result.headers, result.body);
 			  res.send(result.body);
