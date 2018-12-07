@@ -15,11 +15,23 @@ class EatOut extends Component {
     super(props);   
     this.state = {
       isShow: true,
-      pins: []
+      pins: [],
+      latitude:45.501690,
+      longitude:-73.567353,
+      budget:10,
+      data:''
     }
+<<<<<<< HEAD
+=======
+
+    this.saveWallet = this.saveWallet.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.coordinatesCallback = this.coordinatesCallback.bind(this);
+>>>>>>> 560828d242442a9299643bd240a777954ad90333
   }
 
   componentDidMount() {
+    this.setState({id:this.props.data});
     // Call our fetch function below once the component mounts
     // In our package.json we have to add the line "proxy": "http://localhost:3001/"
     // This will let Webpack know to proxy our API requests to our Express backend that will be running on port 3001
@@ -31,12 +43,14 @@ class EatOut extends Component {
 
   //API REquest
    callBackendAPI = async () => {
+    console.log("lat:",this.state.latitude ," long: ",  this.state.longitude);
+
     const response = await fetch('/wallet/loc', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ "lattitude":"45.501690","longitude":"-73.567353" }),
+      body: JSON.stringify({ "lattitude":this.state.latitude,"longitude":this.state.longitude }),
     });
     const body = await response.json();
 
@@ -48,7 +62,12 @@ class EatOut extends Component {
     for (var i = 0; i < body.restaurants.length; i++)
     {
       var rest = body.restaurants[i].restaurant;
+<<<<<<< HEAD
       restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,'name':rest.name, 'price':rest.price_range});
+=======
+      restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,
+        'name':rest.name,'price':rest.average_cost_for_two/2,'budget':this.state.budget});
+>>>>>>> 560828d242442a9299643bd240a777954ad90333
     }
 
     console.log(body);
@@ -58,12 +77,69 @@ class EatOut extends Component {
 
     return restaurants;
   };
+  ///
+  ///
+  //
+
+  geoFindMe() {
+      var output = document.getElementById("out");
+
+      if (!navigator.geolocation){
+        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+        return;
+      }
+
+      function success(position) {
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+      }
+
+      function error() {
+        output.innerHTML = "Unable to retrieve your location";
+      }
+      output.innerHTML = "<p>Locating…</p>";
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+
+  saveWallet(event)
+  {
+    console.log(event.target.value);
+    this.setState({budget:event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('New Wallet Set: ' + this.state.budget);
+    event.preventDefault();
+  }
+
+  coordinatesCallback(center)
+  {
+    console.log("CoordinatesCallback", center);
+    
+    this.setState({
+      latitude:center[0],
+      longitude:center[1]});
+
+    this.callBackendAPI()
+      .then(res => console.log(res)) //set data to the response from the fetch request
+      .catch(err => console.log(err));
+
+    
+  }
 
   render() {
     return (
       <div className="eat-out">
         <Header />
         <div className="side-bar">  
+          <p><button onClick={this.geoFindMe}>Show my location</button></p>
+          <div id="out"></div>
+
+          <form>
+            <input type="text" id="wallet" placeholder="Enter Your Budget" onChange={this.saveWallet} value={this.state.budget}/>
+            <input type="Submit" id="saveB" value="save" onClick={this.handleSubmit}/>
+          </form>
 
           <p>Restaurants</p>
 
@@ -71,7 +147,8 @@ class EatOut extends Component {
 
         <div className="main-bar">
             <Map
-            pins={this.state.pins} 
+            pins={this.state.pins}
+            callback={this.coordinatesCallback}
             />
         </div>
 

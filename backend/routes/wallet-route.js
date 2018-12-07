@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 //just for testing
-const Pantry = require('../models/pantry');
+const Pantry = require('../models/user');
 const request = require('request');
 
 //add location to the user
@@ -71,13 +71,17 @@ router.post(('/loc'),(req,res,next)=>{
 		}
 	}
 
-	request.get('https://developers.zomato.com/api/v2.1/search?lat='+lat+'&lon='+long+'&radius='+'500',options,function(err,zres,body){
+	//sort=real_distance
+
+	request.get('https://developers.zomato.com/api/v2.1/search?lat='+lat+'&lon='+long+'&radius=2000&sort=real_distance&count=50',options,function(err,zres,body){
 	  if(err){
 	  	console.log("problem");
+	  	res.send(err);
 	  }
 	  if(zres.statusCode !== 200 )
 	  {
 	  	console.log(zres.statusCode+" Error");
+	  	res.send(body);
 	  }
 	  else
 	  {

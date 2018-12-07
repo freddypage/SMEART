@@ -10,6 +10,14 @@
 	
 }
 
+.form {
+	border: none;
+	border-radius: 25px;
+    border-color: transparent;
+    display: inline-block;	
+    background: #C7DBD9;
+}
+
 .main {
 	background-color: red;
 }
@@ -33,10 +41,11 @@
     
 
 }
-.side-bar {
-    width: 25%;
-    height: 100vh;
-    background-color: #9DB5B2;
+
+.new-ingredient {
+	width: 90%;
+	height: 15%;
+	text-align: center;
 }
 
 .p {
@@ -44,6 +53,7 @@
 }
 
 .pantry, .new-ingredient {
+	overflow: auto;
 	display: inline-block;
 	border: 1px solid #C7DBD9;
 	border-radius: 25px;	
@@ -58,7 +68,48 @@
 	padding-left: 20px;
 }
 
-.new-ingredient {
-	width: 90%;
-	height: 15%;
+.recipes {
+	overflow: auto;
+	display: inline-block;
+	width: 85%;
+	height:85%;
+	background-color: #9DB5B2; 
+	border: 1px solid #C7DBD9;
+	border-radius: 25px;	
+}
+
+.side-bar {
+    width: 25%;
+    height: 100vh;
+    background-color: #9DB5B2;
+}
+
+
+#save {
+	font-size: 20px;
+	border-radius: 25px;
+	border: none;
+	margin-top: 25px;
+}
+
+#ingredient {
+	border-width: 0px 0px 1px 0px;
+	border-color: transparent;
+	width: 60%;
+	background: #C7DBD9;
+	border-radius: 25px;
+	padding-left:10px;
+	height:15px;
+
+}
+
+#submit{
+	width: 20%;
+	border-color: transparent;
+	border-radius: 25px;
+	margin-left: 10px;
+}
+
+input:focus {
+  outline: none;
 }

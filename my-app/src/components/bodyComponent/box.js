@@ -14,7 +14,7 @@ class Box extends Component {
 	      	<button 
 	      		className="button"
 	      	>
-	      		<a href={this.props.href}>{this.props.title}</a>
+	      		<a href={this.props.href} onClick="return false">{this.props.title}</a>
 	      	</button>
 
 	      </div>
