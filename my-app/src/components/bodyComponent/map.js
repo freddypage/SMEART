@@ -11,7 +11,7 @@ class Map extends Component {
       lat: 45.501690,
       lng: -73.567253
     },
-    zoom: 14
+    zoom: 15
   };
 
  checkBudget(price, budget)
@@ -50,6 +50,7 @@ class Map extends Component {
      const Pins = this.props.pins.map((pin, index) => (
         <Pin
           // required props
+          key={index} //when creating a list all elements should have keys, index is okay but not encouraged
           lat={pin.lat}
           lng={pin.lng}
           name={pin.name}
@@ -68,6 +69,7 @@ class Map extends Component {
           defaultZoom={this.props.zoom}
           onBoundsChange={this._onBoundsChange}
           id='map'
+          hoverDistance={40}
         >
           {Pins}
         </GoogleMapReact>
