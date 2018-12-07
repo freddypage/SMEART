@@ -61,7 +61,7 @@ function authenticate(req, res, next)  {
     if (err) { 
       return next(err); 
     }
-    if (!user) {
+    else if (!user) {
       return res.sendStatus(401).json({
         error: 'Incorrect email or password'
       }); 
@@ -71,7 +71,10 @@ function authenticate(req, res, next)  {
         if (err) { 
           return next(err); 
         }
-        return res.json({id:user.id});
+        else
+        {
+         return res.json({id:user.id});
+      }
       });
     }
   })(req, res, next);

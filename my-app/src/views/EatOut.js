@@ -60,7 +60,7 @@ class EatOut extends Component {
     {
       var rest = body.restaurants[i].restaurant;
       restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,
-        'name':rest.name,'price':rest.average_cost_for_two/2,'budget':this.state.budget});
+        'name':rest.name,'price':rest.average_cost_for_two/2,'budget':Number(this.state.budget)});
     }
 
     console.log(body);

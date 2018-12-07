@@ -55,7 +55,8 @@ class Map extends Component {
           name={pin.name}
           price={pin.price}
           budget={pin.budget}
-          pin={pin} />
+          pin={pin}
+          onBoundsChange={pin.onBoundsChange} />
       ));
 
     return (

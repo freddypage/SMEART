@@ -20,7 +20,7 @@ class App extends Component {
     super(props); 
 
     this.state = {
-      data: JSON.parse(localStorage.getItem('id')) || []
+      data: JSON.parse(sessionStorage.getItem('id')) || []
     };
     this.dataCallback = this.dataCallback.bind(this);
   }
@@ -51,7 +51,7 @@ class App extends Component {
     console.log("dataCallback", id_data);
     this.setState({data:id_data},() =>
      {
-      localStorage.setItem('id', JSON.stringify(this.state.data))
+      sessionStorage.setItem('id', JSON.stringify(this.state.data))
    });
   }
 
