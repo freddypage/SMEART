@@ -24,7 +24,7 @@ const pinStyleHover = {
 
 const bubbleStyleHover = { 
     // talk-bubble
-    margin: '2px',
+    margin: '-10px',
     display: 'inline-block',
     position: 'relative',
 	width: '70px',
