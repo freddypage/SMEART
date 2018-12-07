@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {pinStyle, pinStyleHover, bubbleStyleHover, bubbleStyle} from './pinStyles.js';
+//import {pinStyle, pinStyleRed, pinStyleYellow, pinStyleHover, bubbleStyleHover, bubbleStyle} from './pinStyles.js';
+import {bubbleStyleHover, bubbleStyle} from './pinStyles.js';
+
+const defaultPin = { 
+  width: '0',
+  height: '0',
+  borderLeft: '10px solid transparent',
+  borderRight: '10px solid transparent',
+  borderTop: '20px solid green'
+}
+// pinStyle = {}
+// hoverPin = {}
 
 class Pin extends Component {
   // static propTypes = {
@@ -31,12 +42,13 @@ class Pin extends Component {
     super(props);
     this.state = {
       name: PropTypes.string,
-      price: PropTypes.number
+      //price: PropTypes.number,
+      style: defaultPin
     }   
   }
 
   componentDidMount(){
-    this.setState({name:this.props.name, price:this.props.price})
+    this.setState({name:this.props.name})//, price:this.props.price})
     this.checkPrice(this.props.price,this.props.budget);  
   }
 
@@ -49,34 +61,49 @@ class Pin extends Component {
   {
     if(price<=budget)
     {
-      this.setState({
-        style:{width: '0',
-            height: '0',
-            borderLeft: '10px solid transparent',
-            borderRight: '10px solid transparent',
-            borderTop: '20px solid green'}
+      this.state.style = {
+        ...defaultPin,
+        borderTop: '20px solid green'
+      }
+      // this.setState({
+      //   //style: {pinStyle}
+      //   style:{width: '0',
+      //       height: '0',
+      //       borderLeft: '10px solid transparent',
+      //       borderRight: '10px solid transparent',
+      //       borderTop: '20px solid green'}
             
-      });
+      // });
     }
     else if(price/budget>1.5)
     {
-      this.setState({
-        style:{width: '0',
-            height: '0',
-            borderLeft: '10px solid transparent',
-            borderRight: '10px solid transparent',
-            borderTop: '20px solid red'}
-      });
+      this.state.style = {
+        ...defaultPin,
+        borderTop: '20px solid red'
+      }
+      // this.setState({
+      //   //style:{pinStyleRed}
+      //   style:{width: '0',
+      //       height: '0',
+      //       borderLeft: '10px solid transparent',
+      //       borderRight: '10px solid transparent',
+      //       borderTop: '20px solid red'}
+      // });
     }
     else 
     {
-      this.setState({
-        style:{width: '0',
-            height: '0',
-            borderLeft: '10px solid transparent',
-            borderRight: '10px solid transparent',
-            borderTop: '20px solid yellow'}
-      });
+      this.state.style = {
+        ...defaultPin,
+        borderTop: '20px solid yellow'
+      }
+      // this.setState({
+      //   //style:{pinStyleYellow}
+      //   style:{width: '0',
+      //       height: '0',
+      //       borderLeft: '10px solid transparent',
+      //       borderRight: '10px solid transparent',
+      //       borderTop: '20px solid yellow'}
+      // });
     }
   }
 
@@ -85,10 +112,10 @@ class Pin extends Component {
     }
 
   render() {
-    const pin = this.props.$hover ? pinStyleHover : pinStyle;
+    const pin = this.props.$hover ? {...this.state.style, transform: 'scale(1.25,1.25)'} : this.state.style;
     const bubble = this.props.$hover ? bubbleStyleHover : bubbleStyle;
     const blurb = this.state.name +'';
-    const price=  '\n Price: ' +this.state.price;
+    //const price=  '\n Price: ' +this.state.price;
 
     return (
       // Important! Always set the container height explicitly
@@ -97,12 +124,15 @@ class Pin extends Component {
       //     <p>{blurb}</p>
       //     <p>{price}</p>
       //   </div>
-      <div style={this.state.style} 
+      <div style={pin} 
             lat={45.501690}
              lng={-73.567253} 
              budget={this.props.budget}
              price={this.props.price}
              onChange={this.onChange.bind(this)}>
+        <div style={bubble}>
+           <p>{blurb}</p>
+         </div>
       </div>
     );
   }

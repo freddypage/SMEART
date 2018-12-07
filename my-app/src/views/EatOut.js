@@ -21,13 +21,10 @@ class EatOut extends Component {
       budget:10,
       data:''
     }
-<<<<<<< HEAD
-=======
 
     this.saveWallet = this.saveWallet.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.coordinatesCallback = this.coordinatesCallback.bind(this);
->>>>>>> 560828d242442a9299643bd240a777954ad90333
   }
 
   componentDidMount() {
@@ -62,12 +59,9 @@ class EatOut extends Component {
     for (var i = 0; i < body.restaurants.length; i++)
     {
       var rest = body.restaurants[i].restaurant;
-<<<<<<< HEAD
-      restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,'name':rest.name, 'price':rest.price_range});
-=======
+      //restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,'name':rest.name, 'price':rest.price_range});
       restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,
         'name':rest.name,'price':rest.average_cost_for_two/2,'budget':this.state.budget});
->>>>>>> 560828d242442a9299643bd240a777954ad90333
     }
 
     console.log(body);

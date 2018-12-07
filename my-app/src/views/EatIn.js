@@ -5,10 +5,7 @@ import './styles/eatIn.css';
 
 
 //Components
-<<<<<<< HEAD
-=======
 import Box from '../components/bodyComponent/box';
->>>>>>> 560828d242442a9299643bd240a777954ad90333
 import Header from '../components/headerComponent/header';
 import PantryItem from '../components/bodyComponent/pantryItem';
 import Pantry from '../components/bodyComponent/pantry';

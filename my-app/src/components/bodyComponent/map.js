@@ -11,7 +11,7 @@ class Map extends Component {
       lat: 45.501690,
       lng: -73.567253
     },
-    zoom: 14
+    zoom: 15
   };
 
  checkBudget(price, budget)

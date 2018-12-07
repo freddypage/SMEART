@@ -6,9 +6,19 @@ const pinStyle = {
     borderTop: '20px solid green'
 }
 
+const pinStyleRed = { 
+    ...pinStyle,
+    borderTop: '20px solid red'
+}
+
+const pinStyleYellow = { 
+    ...pinStyle,
+    borderTop: '20px solid yellow'
+}
+
 const pinStyleHover = { 
     ...pinStyle, 
-    borderTop: '20px solid red',
+    borderTop: '20px solid black',
     color: 'white'
 }
 
@@ -31,4 +41,4 @@ const bubbleStyle = {
     visibility: 'hidden'
 }
 
-export {pinStyle, pinStyleHover, bubbleStyleHover, bubbleStyle};
+export {pinStyle, pinStyleRed, pinStyleYellow, pinStyleHover, bubbleStyleHover, bubbleStyle};
