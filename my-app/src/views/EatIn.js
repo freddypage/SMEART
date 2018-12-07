@@ -5,9 +5,7 @@ import './styles/eatIn.css';
 
 
 //Components
-import Header from '../components/headerComponent/header'; 
-import Box from '../components/bodyComponent/box';
-import SideBar from'../components/bodyComponent/sideBar';
+import Header from '../components/headerComponent/header';
 import PantryItem from '../components/bodyComponent/pantryItem';
 
 class EatIn extends Component {

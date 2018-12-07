@@ -6,8 +6,8 @@ import './styles/eatOut.css';
 
 //Components
 import Header from '../components/headerComponent/header'; 
-//import Map from '../components/bodyComponent/map';
-import Map from '../components/eatOutComponents/map';
+import Map from '../components/bodyComponent/map';
+//import Map from '../components/eatOutComponents/map';
 
 class EatOut extends Component {
 
@@ -17,7 +17,6 @@ class EatOut extends Component {
       isShow: true,
       pins: []
     }
-    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -49,7 +48,7 @@ class EatOut extends Component {
     for (var i = 0; i < body.restaurants.length; i++)
     {
       var rest = body.restaurants[i].restaurant;
-      restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,'name':rest.name});
+      restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,'name':rest.name, 'price':rest.price_range});
     }
 
     console.log(body);

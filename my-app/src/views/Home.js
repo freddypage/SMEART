@@ -7,8 +7,6 @@ import './styles/home.css';
 //Components
 import Header from '../components/headerComponent/header'; 
 import Box from '../components/bodyComponent/box';
-import SideBar from '../components/bodyComponent/sideBar';
-
 
 class Home extends Component {
 
