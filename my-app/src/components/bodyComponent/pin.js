@@ -9,7 +9,8 @@ const defaultPin = {
   height: '0',
   borderLeft: '10px solid transparent',
   borderRight: '10px solid transparent',
-  borderTop: '20px solid green'
+  //borderTop: '20px solid green',
+  //zIndex: '0'
 }
 // pinStyle = {}
 // hoverPin = {}
@@ -50,21 +51,27 @@ class Pin extends Component {
     super(props);
     this.state = {
       name: PropTypes.string,
-      //price: PropTypes.number,
+      price: PropTypes.string,
       style: defaultPin
     }   
   }
 
   componentDidMount(){
-    this.setState({name:this.props.name})//, price:this.props.price})
-    this.checkPrice(this.props.price,this.props.budget);  
+    this.checkPrice(this.props.price,this.props.budget);
+    this.state.name = this.props.name;
+    this.state.price = this.props.price;
   }
 
 
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
-    if (this.props.price !== prevProps.price) {
+    if (this.props.budget !== prevProps.budget) {
       this.checkPrice(this.props.price,this.props.budget);  
+    }
+    if (this.props.name !== prevProps.name) {
+      this.state.name = this.props.name;
+      this.state.price = this.props.price;
+      this.checkPrice(this.props.price,this.props.budget);
     }
   }
 
@@ -107,6 +114,7 @@ class Pin extends Component {
     const pin = this.props.$hover ? {...this.state.style, transform: 'scale(1.25,1.25)'} : this.state.style;
     const bubble = this.props.$hover ? bubbleStyleHover : bubbleStyle;
     const blurb = this.state.name +'';
+    const priceP = this.props.price==0 ? 'No price info' : '$'+this.state.price;
     //const price=  '\n Price: ' +this.state.price;
 
     return (
@@ -123,6 +131,7 @@ class Pin extends Component {
              price={parseInt(this.props.price,10)}>
         <div style={bubble}>
            <p>{blurb}</p>
+           <p>{priceP}</p>
          </div>
       </div>
     );
