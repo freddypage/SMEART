@@ -1,5 +1,18 @@
 #README for SMEART
 
+To Start the app:
+ensure you have MongoDB and Node Package Manager installed on your OS (and added to the PATH if you are on Windows).
+pull the github repo and install the dependencies by going into 'backend' and 'my-app' folders respectively and
+typing 'npm install' in the command prompt.
+to start the app in the backend:
+	-in the folder backend, (in your command prompt), type in 'mongod --dbpath db'.
+	-next, type in 'npm start'
+to start the front end
+	-go to the folder 'my-app' and type in 'npm start' in the command prompt
+the app should be running now.
+type in 'http://localhost:3000/' in your browser.
+Now create a username and password (signup) and start using the app (choosing one of the features).
+
 Points and Responsibilities:
 Points ->
 HTML/CSS 2pt
@@ -8,73 +21,24 @@ REACT 2pt
 JSON 1pt
 NoSQL 2pt
 LocalHost 2pt
-Security/Packet Ecrypting - 2pt
-Architecture - 1 pt
+Security/Packet Ecrypting - 1pt
+REST+Pull - 1 pt
 API - 1pt
 
+We each shared the responsibilities equally since we needed to understand the stack to program on our own.
+Anthony and Raymond focused on frontend.
+	-HTML
+	-JS
+	-REACT
+	-CANVAS
+	-JSON
+Fred and Andy focused on back-end.
+	-API
+	-LOCALHOST
+	-NOSQL
+	-REST+pull
+	-Security/Packet
 
 
-To run program:
-download: node, mongodb, mocha, react, express, mongoose
-In the 'backend' folder-->
-Mongoose
-	-mongoose makes accessing the server much easier. You can see how its used by checking out some of 
-	-the js files in the 'test' folder
-Mongodb running server:
-	- create a local folder called 'db' in SMEART then type 'mongod --dbpath filepath' into your command
-	-line. Make sure you replace [filepath] with your actual db address
-	-the server should run in that command window until you kill it
-Mocha 
-	-you can test different db commands using mocha, which is a testing software. Tests should go into 
-	-the test folder. You can see a template for commands and syntax in there too. You can run the tests
-	-by typing 'npm run test' in the command line. This accesses a script from your package.json file. You
-	-might need to replace what I wrote with just 'mocha' if you're on mac.
 
-Schema:
-	-the schemas for the mongodb lie in the models folder of the backend. You can see some templates there to
-	-see how it works. You export it kind of like a java class. The pantryitem.js schema is used in the test 
-	-files.
 
-Download ROBOMongo to see your database. The setup is pretty simple.
-
-~ ~ ~ ~ ~ ~~ ~ ~ ~ ~ ~ ~ ~ ~  ~ ~~ ~  ~ ~ ~ ~~  ~ ~ ~  ~ ~~ ~
-FRONT-END DEPENDENCIES
-Run these commands in the my-app directory to keep them local
-React.JS : sudo npm install -g create-react-app
-React Router : npm install --save react-router
-Google Maps: npm install --save google-map-react
-			 yarn add google-map-react
-
-Anthony:
-Added front-end dependency for Google Maps
-"google-map-react": "^1.1.1"
-Install using
-npm install --save google-map-react
-yarn add google-map-react
-https://github.com/google-map-react/google-map-react for reference
-currently using my Google Cloud API key idk if it'll get charged just don't get crazy with it
-
-Anthony:
-To run the react app on localhost, change into the my-app folder and run "yarn start" from terminal
-
-Anthony:
-~~~ Notes on Babel ~~~
-What problem does Babel solve? Situation where a feature of JavaScript is available in 
-some versions of some browsers, but not in others.
-Babel is a compiler - takes code written in one standard and transforms it to code 
-written into another standard.
-Babel "transpiling" happens at build time - we need a workflow setup that can handle
-this for us. Popular one is Webpack. 
-
-Babel is installed locally in a project, can use npm 
-We can then add Babel configurations to our project using the .babelrc file 
-For example, having the line 
-	"plugins": ["transform-es2015-arrow-functions"]
-will transpile js files, converting arrow functions introduced in ES6, to older
-ES5 functions.
-
-We also have presets, which let you specify what environments you want to support.
-For example, 
-	"presets": ["env", "react"],
-lets babel know we are working in a react environment, and it sets up the environment 
-and modern JS features for you.
