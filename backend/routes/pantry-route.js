@@ -178,6 +178,16 @@ router.get('/recipes/:id',(req,res,next)=>{
 	
 });
 
+router.get('/getrecipe/:id',(req,res,next)=>{
+
+	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+req.params.id+"/information")
+	.header("X-RapidAPI-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
+	.end(function (result) {
+	  console.log(result.status, result.headers, result.body);
+	  res.send(result.body);
+	});
+});
+
 //export the router
 module.exports = router; 
 //goes to package.json

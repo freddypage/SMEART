@@ -23,6 +23,9 @@
 
 // export default Login;
 
+import './styles/login.css';
+import Header from '../components/headerComponent/header'; 
+
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
@@ -86,26 +89,33 @@ export default class Login extends Component {
     
       if(!this.state.redirect) {
         return (
-        <form onSubmit={this.onSubmit}>
-          <h1>Login Below!</h1>
-          <input
-            type="username"
-            name="username"
-            placeholder="Enter username"
-            value={this.state.username}
-            onChange={this.handleInputChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            required
-          />
-         <input type="submit" value="Submit"/>
-        </form>
+
+
+
+          <div className="container">
+
+            <Header/>
+            <form onSubmit={this.onSubmit}>
+              <h1>Login Below!</h1>
+              <input
+                type="username"
+                name="username"
+                placeholder="Enter username"
+                value={this.state.username}
+                onChange={this.handleInputChange}
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+                required
+              />
+             <input type="submit" value="Submit"/>
+            </form>
+          </div>
         );
       } else {
         return(

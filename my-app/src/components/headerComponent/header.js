@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <header className="Header">
 
-      	Smart Eats
+      	EAT SMART
 
       </header>
 
