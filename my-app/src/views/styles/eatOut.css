@@ -62,3 +62,15 @@
 .p {
 	text-align: center;
 }
+
+.scroll
+{
+    border:0.1em solid white;
+    border-width: 10px;
+    overflow-y: scroll;
+     height:400px;
+     margin-right:10px;
+     background: white;
+     margin-left:10px;
+     border-radius: 5px;
+}

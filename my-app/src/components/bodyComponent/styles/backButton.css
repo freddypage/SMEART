@@ -1,20 +1,18 @@
 .backButton {
-	flex-grow: 1;
-  text-align: center;
   display: inline-block;
   color: white;
   height: 10%;
-  width: 50%;
+  width: 100px;
+  float:left;
 }
 
 .button {
 	font-size:15px;
-	padding: 10px;
-	position: center;
+	margin-top:10px;
 	top:50%;
 	text-decoration: none;
  	border-color: transparent;
-	border-radius: 20px;
+	border-radius: 10px;
 }
 
 .anchor

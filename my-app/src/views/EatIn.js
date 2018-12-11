@@ -167,12 +167,6 @@ class EatIn extends Component {
       <div className="eat-in">
         <Header />
         <div className="side-bar">  
-            <BackButton 
-              className="left"
-              title={"Home"}
-              school={"UBC"}
-              href={"home"}
-            />
           <p>Pantry</p>
 
           <Pantry 

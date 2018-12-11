@@ -1,10 +1,27 @@
 .Header {
 	background: #024646;
 	color: white;
-	height: 5vh;
+	
 	text-align: center;
-	font-family: Candara;
+	
 	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 40px;
+	width: 100%;
+}
+
+.float-text
+{
+	text-align: left;
+	font-family: Candara;
 	font-size: 20px;
 
+	
+}
+.float-div
+{
+	display: inline-block;
+	float: center;
+	width: 200px;
+	text-align: left;
 }

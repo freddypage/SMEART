@@ -197,23 +197,31 @@ function getRecipe(id, res)
 		header += id[i].id+'%2C';
 		console.log(id[i].id);
 	}
-	header+=id[id.length-1].id;
 
-	unirest.get(header)
-		.header("X-RapidAPI-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
-		.end(function (result) {
-			var recipeObjs = [];
-			console.log(result.body);
-			var body = result.body;
-			for(var j = 0; j<id.length; j++)
-			{
-				recipeObjs.push({"image":id[j].image,"title":id[j].title,"id":id[j].id, "url":body[j].sourceUrl});
-				console.log(body[j])
-			}
-			console.log(body.length);
+	if(id.length>1)
+	{
+		header+=id[id.length-1].id;
 
-		   res.send(recipeObjs);
-		});
+		unirest.get(header)
+			.header("X-RapidAPI-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
+			.end(function (result) {
+				var recipeObjs = [];
+				console.log(result.body);
+				var body = result.body;
+				for(var j = 0; j<id.length; j++)
+				{
+					recipeObjs.push({"image":id[j].image,"title":id[j].title,"id":id[j].id, "url":body[j].sourceUrl});
+					console.log(body[j])
+				}
+				console.log(body.length);
+
+			   res.send(recipeObjs);
+			});
+	}
+	else
+	{
+		res.send("no recipes");
+	}
 }
 
 router.get('/getrecipe/:id',(req,res,next)=>{

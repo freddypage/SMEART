@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Canvas from './canvas';
+import './styles/logo.css';
 
 
 class Logo extends Component {
@@ -23,7 +24,7 @@ class Logo extends Component {
     }
   
     render() {
-      return <Canvas angle={this.state.angle} />;
+      return <div><div className="portrait"><Canvas angle={this.state.angle}/></div></div>;
     }
   }
 

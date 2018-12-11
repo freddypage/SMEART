@@ -8,6 +8,7 @@ import './styles/eatOut.css';
 import Header from '../components/headerComponent/header'; 
 import Map from '../components/bodyComponent/map';
 import BackButton from '../components/bodyComponent/backButton';
+import Recipe from '../components/bodyComponent/recipe';
 
 class EatOut extends Component {
 
@@ -19,7 +20,8 @@ class EatOut extends Component {
       latitude:45.501690,
       longitude:-73.567353,
       budget:10,
-      data:''
+      data:'',
+      recipes:[]
     }
 
     this.saveWallet = this.saveWallet.bind(this);
@@ -56,18 +58,20 @@ class EatOut extends Component {
     }
 
     var restaurants = [];
+    var restos = []
     for (var i = 0; i < body.restaurants.length; i++)
     {
       var rest = body.restaurants[i].restaurant;
       //restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,'name':rest.name, 'price':rest.price_range});
       restaurants.push({'lng':rest.location.longitude,'lat':rest.location.latitude,
         'name':rest.name,'price':rest.average_cost_for_two/2,'budget':Number(this.state.budget)});
+      restos.push({"title":rest.name,"url":rest.url,"image":rest.featured_image})
     }
 
     console.log(body);
     console.log(restaurants);
 
-    this.setState({pins:restaurants});
+    this.setState({pins:restaurants,recipes:restos});
 
     return restaurants;
   };
@@ -138,15 +142,6 @@ class EatOut extends Component {
       <div className="eat-out">
         <Header />
         <div className="side-bar">  
-          <div className="backB-bar">
-            <BackButton 
-              className="left"
-              title={"Home"}
-              school={"UBC"}
-              href={"home"}
-            />
-          </div>
-
           <p><button onClick={this.geoFindMe}>Show my location</button></p>
           <div id="out"></div>
 
@@ -156,6 +151,11 @@ class EatOut extends Component {
           </form>
 
           <p>Restaurants</p>
+          <div className="scroll">
+          <Recipe
+              recipes={this.state.recipes}
+            />
+          </div>
 
         </div>
 
