@@ -11,6 +11,7 @@ import PantryItem from '../components/bodyComponent/pantryItem';
 import Pantry from '../components/bodyComponent/pantry';
 import Recipe from '../components/bodyComponent/recipe';
 import SideBar from'../components/bodyComponent/sideBar';
+import BackButton from '../components/bodyComponent/backButton';
 
 
 
@@ -166,7 +167,12 @@ class EatIn extends Component {
       <div className="eat-in">
         <Header />
         <div className="side-bar">  
-
+            <BackButton 
+              className="left"
+              title={"Home"}
+              school={"UBC"}
+              href={"home"}
+            />
           <p>Pantry</p>
 
           <Pantry 

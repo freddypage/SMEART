@@ -16,7 +16,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+  
  
         <div className="Container">
             <Box 

@@ -19,7 +19,7 @@ class Home extends Component {
       <div className="App">
         <p>{this.props.data}</p>
 
-        <Header />
+        
  
         <div className="Container">
           <Box 

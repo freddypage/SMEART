@@ -1,22 +1,20 @@
-.Box {
+.backButton {
+	flex-grow: 1;
   text-align: center;
   display: inline-block;
   color: white;
-  background-color: #484B63;
-  height: 100vh;
+  height: 10%;
   width: 50%;
 }
 
 .button {
-  padding: 10px;
-
-	position: relative;
+	font-size:15px;
+	padding: 10px;
+	position: center;
 	top:50%;
 	text-decoration: none;
  	border-color: transparent;
 	border-radius: 20px;
-	font-size:20px;
-	font-color:black;
 }
 
 .anchor
