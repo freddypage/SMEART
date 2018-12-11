@@ -18,7 +18,6 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-        <p>{this.props.data}</p>
 
         <Header />
         <div className="Container">

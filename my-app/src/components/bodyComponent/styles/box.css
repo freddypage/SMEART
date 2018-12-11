@@ -1,5 +1,20 @@
 .Box {
   text-align: center;
+
+  display: inline-block;
+  color: white;
+  background-color: #484B63;
+  height: 50vh;
+  width: 50%;
+}
+
+.button {
+	position: relative;
+	top:50%;
+}
+/* 
+.Box {
+  text-align: center;
   display: inline-block;
   color: white;
   background-color: #484B63;
@@ -28,4 +43,4 @@
 .anchor:hover
 {
 	color: purple;
-}
+} */
