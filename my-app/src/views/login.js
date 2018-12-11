@@ -3,11 +3,8 @@ import Header from '../components/headerComponent/header';
 
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
+  BrowserRouter as 
+  Redirect
 } from "react-router-dom";
 
 export default class Login extends Component {

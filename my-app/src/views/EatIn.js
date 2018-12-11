@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-
-
 import './styles/eatIn.css';
-
 
 //Components
 import Header from '../components/headerComponent/header';
 import Pantry from '../components/bodyComponent/pantry';
 import Recipe from '../components/bodyComponent/recipe';
 import BackButton from '../components/bodyComponent/backButton';
-
-
 
 class EatIn extends Component {
 
@@ -108,7 +103,7 @@ class EatIn extends Component {
     var body = JSON.stringify({"ingredient": this.state.ingredient})
 
 
-    if (this.state.ingredient == "") {
+    if (this.state.ingredient === "") {
 
         alert("Name must be filled out");
         return false;

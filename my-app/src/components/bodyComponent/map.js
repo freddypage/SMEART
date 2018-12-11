@@ -41,12 +41,6 @@ class Map extends Component {
   }
 
   render(props) {
-
-
-
-    const budg = this.props.budget;
-
-
      const Pins = this.props.pins.map((pin, index) => (
         <Pin
           // required props
