@@ -7,6 +7,7 @@ import './styles/home.css';
 //Components
 import Header from '../components/headerComponent/header'; 
 import Box from '../components/bodyComponent/box';
+import Logo from '../components/bodyComponent/logo';
 
 class Home extends Component {
 
@@ -20,8 +21,11 @@ class Home extends Component {
         <p>{this.props.data}</p>
 
         <Header />
- 
         <div className="Container">
+          <Logo />
+        </div>
+        <div className="Container">
+
           <Box 
             className="left"
             title={"Eat In"}
