@@ -10,7 +10,6 @@ class Header extends Component {
     	<div>
       <header className="Header">
       	<BackButton 
-              className="left"
               title={"Home"}
               school={"UBC"}
               href={"home"}

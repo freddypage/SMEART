@@ -10,7 +10,8 @@ class Header extends Component {
     	<div>
       <header className="Header">
 
-      	<div className="float-div"><h2 className="float-text">EAT SMART</h2></div>
+      	<div className="float-div2">
+      	<h2 className="float-text">EAT SMART</h2></div>
 
       </header>
       </div>

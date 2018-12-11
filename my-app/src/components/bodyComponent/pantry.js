@@ -18,8 +18,8 @@ class Pantry extends Component {
 
   renderIngredient(ingredient, index) {
     return (
-      <li key={index}>
-        <button onClick={this.handleRemove.bind(this, index)}>
+      <li key={index} className="listItem">
+        <button onClick={this.handleRemove.bind(this, index)} className="but">
           Delete
         </button>
         {ingredient.name}

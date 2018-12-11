@@ -14,8 +14,9 @@
 {
 	text-align: left;
 	font-family: Candara;
-	font-size: 20px;
-
+	font-size: 30px;
+	margin:0;
+	padding: 0;
 	
 }
 .float-div
@@ -24,4 +25,18 @@
 	float: center;
 	width: 200px;
 	text-align: left;
+	margin:0;
+	padding: 0;
+	margin-right:100px;
+}
+
+.float-div2
+{
+	display: inline-block;
+	float: center;
+	width: 200px;
+	text-align: center;
+	margin:0;
+	padding: 0;
+
 }

@@ -159,7 +159,7 @@ class EatIn extends Component {
       <div className="eat-in">
         <Header />
         <div className="side-bar">  
-          <p>Pantry</p>
+          <p className="titleTxt">Pantry</p>
 
           <Pantry 
             className="pantry"
@@ -167,7 +167,7 @@ class EatIn extends Component {
             handleDeleteCallback= {this.handleDeleteCallback}
           />
     
-          <p>New Ingredient</p>
+          <p className="titleTxt">New Ingredient</p>
   
           <form onSubmit={this.handleSubmit}>
             <input type="text" id="ingredient" value={this.state.ingredient} placeholder="New ingredient" onChange={this.handleChange} /> 
@@ -180,7 +180,7 @@ class EatIn extends Component {
         </div>
 
         <div className="main-bar">
-          <p>Recipes</p>
+          <p className="titleTxt" >Recipes</p>
 
           <div className="recipes">
 

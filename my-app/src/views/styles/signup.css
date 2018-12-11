@@ -12,7 +12,7 @@
 
 .credentials
 {
-	height:auto;
+	height:110px;
 	float:left;
 	text-align:center;
 }
@@ -37,9 +37,11 @@
 
 .submitB
 {
-	margin-top:100%;
 	display: inline-block;
-    text-align: center;
+	float: bottom;
+	bottom: 0;
+    left: 0;
+    margin-top:75px;
 }
 
 .h1Txt

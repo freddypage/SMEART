@@ -1,4 +1,8 @@
-
+.titleTxt
+{
+	color:black;
+	font-size:25px;
+}
 
 .eat-in {
 
@@ -72,7 +76,7 @@
 	overflow: auto;
 	display: inline-block;
 	width: 85%;
-	height:85%;
+	height:550px;
 	background-color: #9DB5B2; 
 	border: 1px solid #C7DBD9;
 	border-radius: 25px;	

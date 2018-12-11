@@ -14,8 +14,10 @@ class Home extends Component {
       <div className="App">
 
         <Header />
+        <div>
         <div className="Container">
           <Logo />
+        </div>
         </div>
         <div className="Container">
 

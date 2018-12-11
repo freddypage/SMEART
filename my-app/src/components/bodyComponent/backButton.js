@@ -8,9 +8,9 @@ class BackButton extends Component {
 	      <div className="backButton">
 
 	      	<button 
-	      		className="button"
+	      		className="button2"
 	      	>
-	      		<a href={this.props.href} onClick="return false" className="anchor">{this.props.title}</a>
+	      		<a href={this.props.href} onClick="return false" className="anchor2">{this.props.title}</a>
 	      	</button>
 
 	      </div>

@@ -6,7 +6,7 @@
   float:left;
 }
 
-.button {
+.button2 {
 	font-size:15px;
 	margin-top:10px;
 	top:50%;
@@ -15,13 +15,13 @@
 	border-radius: 10px;
 }
 
-.anchor
+.anchor2
 {
 	color: #000000;
 	text-decoration: none;
 }
 
-.anchor:hover
+.anchor2:hover
 {
 	color: purple;
 }
