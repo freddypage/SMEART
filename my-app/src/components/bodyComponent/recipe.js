@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
 import './styles/recipe.css';
 
 
@@ -8,31 +9,25 @@ class Recipe extends Component {
     super(props)
 
     this.state = {
-      recipe: {}
+      recipe: {},
+      recipeID: null,
+      recipeURL: null
     }
 
+    this.handleRecipeLink = this.handleRecipeLink.bind(this);
+    this.handleLink = this.handleLink.bind(this);
+
   }
 
-  handleRecipeLink() {
+  handleRecipeLink(recipe) {
+
+    var win = window.open(recipe.url, '_blank');
+    win.focus();
 
   }
 
-  renderRecipes(recipe, index) {
-
-    console.log("recipe name", recipe.title)
-
-    return(
-      <div className="recipe-container" target="_blank">
-        
-        <img src = {recipe.image} className="picture"/>
-        
-
-        <div className="content">
-          <p >{recipe.title}</p>
-        </div>
-      </div>
-    );
-
+  handleLink() {
+    console.log("CLICKED!!")
   }
 
 
@@ -42,7 +37,29 @@ class Recipe extends Component {
 
     return (
 
-        this.props.recipes.map(this.renderRecipes)
+        this.props.recipes.map((recipe, index) => {
+          return (
+            <div className="recipe-container" target="_blank">
+        
+              <img src = {recipe.image} className="picture"/>
+              
+              <div className="content">
+
+
+                <button 
+                  className="recipe-button"
+                  onClick={this.handleRecipeLink.bind(this,recipe)}
+                >
+                {recipe.title}
+                </button>
+
+                
+
+
+              </div>
+            </div>
+          )
+        }) 
     );
   }
 

@@ -7,6 +7,7 @@ import './styles/home.css';
 //Components
 import Header from '../components/headerComponent/header'; 
 import Box from '../components/bodyComponent/box';
+import Logo from '../components/bodyComponent/logo';
 
 class Home extends Component {
 
@@ -17,10 +18,13 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-      <Header/>
-        
- 
+
+        <Header />
         <div className="Container">
+          <Logo />
+        </div>
+        <div className="Container">
+
           <Box 
             className="left"
             title={"Eat In"}

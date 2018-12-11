@@ -6,6 +6,8 @@ import './styles/landing.css';
 import Header from '../components/headerComponent/header'; 
 import Box from '../components/bodyComponent/box';
 
+import Logo from '../components/bodyComponent/logo';
+
 
 class Landing extends Component {
 
@@ -17,7 +19,9 @@ class Landing extends Component {
     return (
       <div className="App">
         <Header/>
- 
+        <div className="Container">
+          <Logo />
+        </div>
         <div className="Container">
             <Box 
                 className="left"
