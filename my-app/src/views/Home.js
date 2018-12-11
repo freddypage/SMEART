@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-//Import for Router
-import {BrowserRouter, Route} from 'react-router-dom';
 
 import './styles/home.css';
 

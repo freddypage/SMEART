@@ -5,12 +5,9 @@ import './styles/eatIn.css';
 
 
 //Components
-import Box from '../components/bodyComponent/box';
 import Header from '../components/headerComponent/header';
-import PantryItem from '../components/bodyComponent/pantryItem';
 import Pantry from '../components/bodyComponent/pantry';
 import Recipe from '../components/bodyComponent/recipe';
-import SideBar from'../components/bodyComponent/sideBar';
 import BackButton from '../components/bodyComponent/backButton';
 
 
