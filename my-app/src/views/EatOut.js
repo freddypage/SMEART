@@ -10,6 +10,15 @@ import Map from '../components/bodyComponent/map';
 import BackButton from '../components/bodyComponent/backButton';
 import Recipe from '../components/bodyComponent/recipe';
 
+import {
+  BrowserRouter as 
+  Router,
+  Redirect,
+  Route,
+  Link,
+  withRouter
+} from "react-router-dom";
+
 class EatOut extends Component {
 
   constructor(props) {
@@ -138,6 +147,13 @@ class EatOut extends Component {
   }
 
   render() {
+    if(this.props.data===""||this.props.data===undefined||this.props.data.length==0)
+    {
+      console.log("yeet");
+      return(
+          <Redirect to='/'/>
+        );
+    }
     return (
       <div className="eat-out">
         <Header />

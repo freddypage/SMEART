@@ -7,6 +7,15 @@ import Pantry from '../components/bodyComponent/pantry';
 import Recipe from '../components/bodyComponent/recipe';
 import BackButton from '../components/bodyComponent/backButton';
 
+import {
+  BrowserRouter as 
+  Router,
+  Redirect,
+  Route,
+  Link,
+  withRouter
+} from "react-router-dom";
+
 class EatIn extends Component {
 
   constructor(props) {
@@ -27,6 +36,7 @@ class EatIn extends Component {
 
   componentDidMount() {
     console.log("DATA:",this.props.data)
+    
     this.setState({id:this.props.data}, function() {
       console.log("ID:",this.state.id);
       fetch('/pantry/recipes/'+this.state.id)
@@ -155,6 +165,14 @@ class EatIn extends Component {
     var recipes = this.state.recipes
     var ingredients = this.state.ingredients
 
+    if(this.props.data===""||this.props.data===undefined||this.props.data.length==0)
+    {
+      console.log("yeet");
+      return(
+          <Redirect to='/'/>
+        );
+    }
+
     return (
       <div className="eat-in">
         <Header />
@@ -170,11 +188,11 @@ class EatIn extends Component {
           <p className="titleTxt">New Ingredient</p>
   
           <form onSubmit={this.handleSubmit}>
-            <input type="text" id="ingredient" value={this.state.ingredient} placeholder="New ingredient" onChange={this.handleChange} /> 
-            <input type="submit" id="submit" value="Add" />
+            <input type="text" id="ingredient" value={this.state.ingredient} placeholder="New ingredient" onChange={this.handleChange} className="but"/> 
+            <input type="submit" id="submit" value="Add" className="but"/>
           </form>
 
-          <button id="save" onClick={this.handleSearch}>Save & Search</button>
+          <button id="save" onClick={this.handleSearch} className="but">Save & Search</button>
 
          
         </div>

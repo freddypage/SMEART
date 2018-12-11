@@ -117,3 +117,9 @@
 input:focus {
   outline: none;
 }
+
+.but
+{
+	padding: 5px;
+	font-size:15px;
+}
