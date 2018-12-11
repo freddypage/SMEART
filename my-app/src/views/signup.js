@@ -1,10 +1,14 @@
 import './styles/signup.css';
-import Header from '../components/headerComponent/header'; 
+import Header from '../components/headerComponent/header2'; 
 
 import React, { Component } from 'react';
 import {
-  BrowserRouter as 
-  Redirect
+  BrowserRouter as
+  Router, 
+  Redirect,
+  Route,
+  Link,
+  withRouter
 } from "react-router-dom";
 
 export default class Login extends Component {

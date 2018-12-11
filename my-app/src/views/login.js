@@ -1,10 +1,14 @@
 import './styles/login.css';
-import Header from '../components/headerComponent/header'; 
+import Header from '../components/headerComponent/header2'; 
 
 import React, { Component } from 'react';
 import {
   BrowserRouter as 
-  Redirect
+  Router,
+  Redirect,
+  Route,
+  Link,
+  withRouter
 } from "react-router-dom";
 
 export default class Login extends Component {
@@ -48,6 +52,7 @@ export default class Login extends Component {
     }).then(response=>
     {
       console.log(response);
+      console.log('worked');
       this.setState({redirect: true});
       this.props.callback(response.id);
     })
@@ -105,6 +110,7 @@ export default class Login extends Component {
           </div>
         );
       } else {
+        console.log('going back');
         return(
           <Redirect to='/home'/>
         );

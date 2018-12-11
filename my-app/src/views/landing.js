@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './styles/landing.css';
 
 //Components
-import Header from '../components/headerComponent/header'; 
+import Header from '../components/headerComponent/header2'; 
 import Box from '../components/bodyComponent/box';
 
 import Logo from '../components/bodyComponent/logo';
