@@ -95,26 +95,41 @@ export default class Login extends Component {
           <div className="container">
 
             <Header/>
-            <form onSubmit={this.onSubmit}>
-              <h1>Login Below!</h1>
-              <input
-                type="username"
-                name="username"
-                placeholder="Enter username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-                required
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                required
-              />
-             <input type="submit" value="Submit"/>
-            </form>
+            <div className="formbox">
+              <form onSubmit={this.onSubmit} className="formStyle">
+                <h1 className="fontStyling">Login Below!</h1>
+
+                <div className="credentials">
+                  <h5 className="smallText">username:</h5>
+                  <input
+                    className="inputField"
+                    type="username"
+                    name="username"
+                    placeholder="Enter username"
+                    value={this.state.username}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                </div>
+
+                <div className="credentials">
+                  <h5 className="smallText">password</h5>
+                  <input
+                    className="inputField"
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                </div>
+
+               <div className="credentials">
+                 <input type="submit" value="Submit" className="submitB"/>
+               </div>
+              </form>
+            </div>
           </div>
         );
       } else {

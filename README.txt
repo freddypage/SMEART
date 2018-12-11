@@ -1,4 +1,19 @@
 #README for SMEART
+
+Points and Responsibilities:
+Points ->
+HTML/CSS 2pt
+JS/DOM 2pt
+REACT 2pt
+JSON 1pt
+NoSQL 2pt
+LocalHost 2pt
+Security/Packet Ecrypting - 2pt
+Architecture - 1 pt
+API - 1pt
+
+
+
 To run program:
 download: node, mongodb, mocha, react, express, mongoose
 In the 'backend' folder-->
