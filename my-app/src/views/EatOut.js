@@ -112,7 +112,7 @@ class EatOut extends Component {
       console.log(pins[i].budget);
     }
 
-    this.state.pins = pins;
+    this.setState({pins:pins});
 
     this.setState({budget:event.target.value});
   }

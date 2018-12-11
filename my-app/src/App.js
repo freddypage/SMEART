@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import './App.css';
 //necessary import for Router
 import {BrowserRouter, Route} from 'react-router-dom';
 //import all of our pages to App

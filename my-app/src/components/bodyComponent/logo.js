@@ -7,6 +7,7 @@ class Logo extends Component {
     constructor(props) {
       super(props);
       this.state = { angle: 0 };
+      //bind the update function
       this.updateAnimationState = this.updateAnimationState.bind(this);
     }
   

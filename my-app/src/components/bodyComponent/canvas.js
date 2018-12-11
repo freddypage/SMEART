@@ -8,21 +8,21 @@ class Canvas extends Component {
     }
   
     componentDidUpdate() {
-      const { angle } = this.props;
-      const canvas = this.canvasRef.current;
-      const ctx = canvas.getContext('2d');
-      const width = canvas.width;
-      const height = canvas.height;
+        const { angle } = this.props;
+        const canvas = this.canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
 
         var logo = new Image();
-      logo.src = logoImg;
-      logo.onload = function() {
-        ctx.save();
-        ctx.clearRect(0, 0, width, height);
-        ctx.translate(width / 2, height / 2);
-        ctx.rotate((angle * Math.PI) / 180);
-        ctx.drawImage(logo, -logo.width/2, -logo.height/2);
-        ctx.restore();
+        logo.src = logoImg;
+        logo.onload = function() {
+            ctx.save(); //save the default state
+            ctx.clearRect(0, 0, width, height);
+            ctx.translate(width / 2, height / 2);
+            ctx.rotate((angle * Math.PI) / 180);
+            ctx.drawImage(logo, -logo.width/2, -logo.height/2);
+            ctx.restore(); //restore the default state so we can apply transformations as if to default
       }
     }
   

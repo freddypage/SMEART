@@ -1,38 +1,10 @@
-// import React, { Component } from 'react';
-
-// //Components
-// import Header from '../components/headerComponent/header'; 
-// import AuthForm from '../components/authComponents/authForm';
-
-
-// class SignUp extends Component {
-
-//   constructor(props) {
-//     super(props);
-//   }
-  
-//   render() {
-//     return (
-//       <div>
-//         <Header />
-//         <AuthForm />
-//       </div>
-//     );
-//   }
-// }
-
-// export default SignUp;
-
 import './styles/signup.css';
 import Header from '../components/headerComponent/header'; 
 
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
+  BrowserRouter as 
+  Redirect
 } from "react-router-dom";
 
 export default class Login extends Component {

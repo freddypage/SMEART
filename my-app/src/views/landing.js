@@ -10,10 +10,6 @@ import Logo from '../components/bodyComponent/logo';
 
 
 class Landing extends Component {
-
-  constructor(props) {
-    super(props);
-  }
   
   render() {
     return (
