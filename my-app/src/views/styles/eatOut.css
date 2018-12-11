@@ -53,6 +53,12 @@
     background-color: #9DB5B2;
 }
 
+.backB-bar
+{
+    height: 10vh;
+    width: 100%;
+}
+
 .p {
 	text-align: center;
 }

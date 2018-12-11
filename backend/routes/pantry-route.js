@@ -165,8 +165,19 @@ router.get('/recipes/:id',(req,res,next)=>{
 			unirest.get(apiRequestH)
 			.header("X-RapidAPI-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
 			.end(function (result) {
-			  console.log(result.status, result.headers, result.body);
-			  res.send(result.body);
+			  // console.log(result.status, result.headers, result.body);
+
+			  var recipes = result.body;
+			  var recipeObjs = [];
+
+			  for(var i = 0; i<recipes.length; i++)
+			  {		  	
+			  	recipeObjs.push({"image":recipes[i].image,"title":recipes[i].title,"id":recipes[i].id});		  	
+			  }
+
+			  var resObj = getRecipe(recipeObjs, res);
+
+			  
 			});
 	    }
 	   	else{
@@ -176,6 +187,44 @@ router.get('/recipes/:id',(req,res,next)=>{
 
   
 	
+});
+
+function getRecipe(id, res)
+{
+	var header = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids=";
+	for(var i = 0; i<(id.length -1); i++)
+	{
+		header += id[i].id+'%2C';
+		console.log(id[i].id);
+	}
+	header+=id[id.length-1].id;
+
+	unirest.get(header)
+		.header("X-RapidAPI-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
+		.end(function (result) {
+			var recipeObjs = [];
+			console.log(result.body);
+			var body = result.body;
+			for(var j = 0; j<id.length; j++)
+			{
+				recipeObjs.push({"image":id[j].image,"title":id[j].title,"id":id[j].id, "url":body[j].sourceUrl});
+				console.log(body[j])
+			}
+			console.log(body.length);
+
+		   res.send(recipeObjs);
+		});
+}
+
+router.get('/getrecipe/:id',(req,res,next)=>{
+
+	console.log(req.params.id);
+	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/"+req.params.id+"/information")
+	.header("X-RapidAPI-Key", "VABWfwhrZtmsht2xpwFIwwsQqmOdp1n320cjsnXxpuXczedJU3")
+	.end(function (result) {
+	  console.log(result.status, result.headers, result.body);
+	  res.send(result.body);
+	});
 });
 
 //export the router

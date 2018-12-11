@@ -18,3 +18,8 @@
 .content {
 	width: 60%;
 }
+
+.recipe-button {
+	background-color: #9DB5B2;
+    border: none;
+}

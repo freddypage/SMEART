@@ -7,7 +7,7 @@ import './styles/eatOut.css';
 //Components
 import Header from '../components/headerComponent/header'; 
 import Map from '../components/bodyComponent/map';
-//import Map from '../components/eatOutComponents/map';
+import BackButton from '../components/bodyComponent/backButton';
 
 class EatOut extends Component {
 
@@ -99,11 +99,22 @@ class EatOut extends Component {
   saveWallet(event)
   {
     console.log(event.target.value);
+    console.log('here');
+    var pins = this.state.pins;
+    console.log('here');
+    for(var i = 0; i<pins.length; i++)
+    {
+      pins[i].budget = event.target.value;
+      console.log(pins[i].budget);
+    }
+
+    this.state.pins = pins;
+
     this.setState({budget:event.target.value});
   }
 
   handleSubmit(event) {
-    alert('New Wallet Set: ' + this.state.budget);
+    //alert('New Wallet Set: ' + this.state.budget);
     event.preventDefault();
   }
 
@@ -127,6 +138,15 @@ class EatOut extends Component {
       <div className="eat-out">
         <Header />
         <div className="side-bar">  
+          <div className="backB-bar">
+            <BackButton 
+              className="left"
+              title={"Home"}
+              school={"UBC"}
+              href={"home"}
+            />
+          </div>
+
           <p><button onClick={this.geoFindMe}>Show my location</button></p>
           <div id="out"></div>
 

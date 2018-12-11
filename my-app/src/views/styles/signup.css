@@ -1,0 +1,63 @@
+.container
+{
+	background-color: #484B63;
+	height: 100vh;
+}
+
+.formbox
+{
+	float:center;
+	text-align: center;
+}
+
+.credentials
+{
+	height:auto;
+	float:left;
+	text-align:center;
+}
+
+.formStyle 
+{
+	margin-top:100px; 
+    display: inline-block;
+    padding: 50px;
+    border-radius: 30px;
+    font-family: Candara;
+    background: #024646;
+}
+
+.smallText
+{
+	color:white;
+	font-size: 20px;
+	padding-bottom: 5px;
+	margin-bottom: 5px; 
+}
+
+.submitB
+{
+	margin-top:100%;
+	display: inline-block;
+    text-align: center;
+}
+
+.h1Txt
+{
+	padding-bottom: 20px;
+}
+
+.inputField
+{
+	padding-top: 5px;
+	margin-top: 5px; 
+	margin-right: 5px;
+	margin-left: 10px;
+}
+
+.fontStyling
+{
+	color:white;
+	font-size: 30px;
+	padding-bottom: 20px;
+}
