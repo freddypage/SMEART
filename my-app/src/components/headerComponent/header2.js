@@ -9,7 +9,6 @@ class Header extends Component {
     return (
     	<div>
       <header className="Header">
-
       	<div className="float-div2">
       	<img src={mainLogo} className="imgS"/>
       	<h2 className="float-text">EAT SMART</h2>

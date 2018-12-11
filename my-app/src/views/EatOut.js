@@ -36,6 +36,7 @@ class EatOut extends Component {
     this.saveWallet = this.saveWallet.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.coordinatesCallback = this.coordinatesCallback.bind(this);
+    this.geoFindMe = this.geoFindMe.bind(this);
   }
 
   componentDidMount() {
@@ -90,6 +91,7 @@ class EatOut extends Component {
 
   geoFindMe() {
       var output = document.getElementById("out");
+      let comp = this;
 
       if (!navigator.geolocation){
         output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
@@ -100,6 +102,10 @@ class EatOut extends Component {
         var latitude  = position.coords.latitude;
         var longitude = position.coords.longitude;
         output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+        comp.setState({
+          latitude:latitude,
+          longitude:longitude});
+        comp.callBackendAPI();
       }
 
       function error() {
