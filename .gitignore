@@ -2,3 +2,4 @@ node_modules/
 frontend/src
 my-app/src/views/Home.js
 my-app/src/views/Home.js
+my-app/src/components/bodyComponent/styles/logo.css
