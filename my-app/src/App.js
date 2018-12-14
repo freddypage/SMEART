@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 //necessary import for Router
 import {BrowserRouter, Route} from 'react-router-dom';
 //import all of our pages to App
-import Home from './views/home';
-import EatIn from './views/eatIn';
-import EatOut from './views/eatOut';
+import Home from './views/Home';
+import EatIn from './views/EatIn';
+import EatOut from './views/EatOut';
 
 import Landing from './views/landing';
 import Login from './views/login';
@@ -73,14 +73,14 @@ class App extends Component {
               <SignUp callback={this.dataCallback}/>
             </div>
           )}/>
-          <Route exact={true} path='/Home' render={() => (
+          <Route exact={true} path='/home' render={() => (
             <div className="home">
               <Home 
                 data = {this.state.data}
               />
             </div>
           )}/>
-          <Route exact={true} path='/EatIn' render={() => (
+          <Route exact={true} path='/eatIn' render={() => (
             <div className="eat-in">
               <EatIn 
                 data = {this.state.data}
@@ -88,7 +88,7 @@ class App extends Component {
               />
             </div>
           )}/>
-          <Route exact={true} path='/EatOut' render={() => (
+          <Route exact={true} path='/eatOut' render={() => (
             <div className="eat-out">
               <EatOut 
                 data = {this.state.data}
