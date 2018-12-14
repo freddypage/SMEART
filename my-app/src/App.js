@@ -73,14 +73,14 @@ class App extends Component {
               <SignUp callback={this.dataCallback}/>
             </div>
           )}/>
-          <Route exact={true} path='/home' render={() => (
+          <Route exact={true} path='/Home' render={() => (
             <div className="home">
               <Home 
                 data = {this.state.data}
               />
             </div>
           )}/>
-          <Route exact={true} path='/eatIn' render={() => (
+          <Route exact={true} path='/EatIn' render={() => (
             <div className="eat-in">
               <EatIn 
                 data = {this.state.data}
@@ -88,7 +88,7 @@ class App extends Component {
               />
             </div>
           )}/>
-          <Route exact={true} path='/eatOut' render={() => (
+          <Route exact={true} path='/EatOut' render={() => (
             <div className="eat-out">
               <EatOut 
                 data = {this.state.data}
